@@ -4,7 +4,7 @@ Costa Rica Kids
 
 Stack
 
-* Microsoft Windows 7+
+* Microsoft Windows 8+
 
 * SQL Server Express 2014
  * install from http://www.microsoft.com/en-ca/server-cloud/products/sql-server-editions/sql-server-express.aspx
@@ -29,4 +29,3 @@ Stack
 
 * nssm
  * available in the repository, nssm.exe installs a service wrapper around the "jruby -S rails server" command.
- 
