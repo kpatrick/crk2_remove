@@ -24,5 +24,5 @@ Stack
 
 * rails
  * run the command "jruby -S bundle install"
- * run the command "jruby -S server start"
+ * run the command "jruby -S rails server"
  * open http://localhost:3000 to see a default Ruby on Rails page
