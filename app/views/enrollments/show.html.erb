@@ -1,0 +1,131 @@
+<h1>Showing Enrollment</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>School Year:</strong>
+  <%= @enrollment.school_year %>
+</p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @enrollment.child_id %>
+</p>
+
+<p>
+  <strong>Child Code:</strong>
+  <%= @enrollment.child_code %>
+</p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @enrollment.sponsor_id %>
+</p>
+
+<p>
+  <strong>Sponsor Code:</strong>
+  <%= @enrollment.sponsor_code %>
+</p>
+
+<p>
+  <strong>New Year Shirt Size:</strong>
+  <%= @enrollment.newyear_shirt_size %>
+</p>
+
+<p>
+  <strong>New Year Pant Size:</strong>
+  <%= @enrollment.newyear_pant_size %>
+</p>
+
+<p>
+  <strong>New Year Shoe Size:</strong>
+  <%= @enrollment.newyear_shoe_size %>
+</p>
+
+<p>
+  <strong>Mid Year Shirt Size:</strong>
+  <%= @enrollment.midyear_shirt_size %>
+</p>
+
+<p>
+  <strong>Mid Year Pant Size:</strong>
+  <%= @enrollment.midyear_pant_size %>
+</p>
+
+<p>
+  <strong>Mid Year Shoe Size:</strong>
+  <%= @enrollment.midyear_shoe_size %>
+</p>
+
+<p>
+  <strong>New Year Attendance:</strong>
+  <%= @enrollment.newyear_attendance_id %>
+</p>
+
+<p>
+  <strong>New Year Attendance Notes:</strong>
+  <%= @enrollment.newyear_attendance_notes %>
+</p>
+
+<p>
+  <strong>Mid Year Attendance:</strong>
+  <%= @enrollment.midyear_attendance_id %>
+</p>
+
+<p>
+  <strong>Mid Year Attendance Notes:</strong>
+  <%= @enrollment.midyear_attendance_notes %>
+</p>
+
+<p>
+  <strong>Report Card:</strong>
+  <%= @enrollment.report_card %>
+</p>
+
+<p>
+  <strong>Report Notes:</strong>
+  <%= @enrollment.report_notes %>
+</p>
+
+<p>
+  <strong>Work Form:</strong>
+  <%= @enrollment.work_form %>
+</p>
+
+<p>
+  <strong>Work Form Notes:</strong>
+  <%= @enrollment.work_form_notes %>
+</p>
+
+<p>
+  <strong>Pass:</strong>
+  <%= @enrollment.pass %>
+</p>
+
+<p>
+  <strong>Pass Notes:</strong>
+  <%= @enrollment.pass_notes %>
+</p>
+
+<p>
+  <strong>Grades:</strong>
+  <%= @enrollment.grades %>
+</p>
+
+<p>
+  <strong>Grades Notes:</strong>
+  <%= @enrollment.grades_notes %>
+</p>
+
+<p>
+  <strong>Letter:</strong>
+  <%= @enrollment.letter %>
+</p>
+
+<p>
+  <strong>Not Included:</strong>
+  <%= @enrollment.not_included %>
+</p>
+
+<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
+<%= link_to 'Back', enrollments_path %>

@@ -1,0 +1,66 @@
+<h1>Showing Guardian</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @guardian.family_id %>
+</p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @guardian.relationship %>
+</p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @guardian.relationship_id %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @guardian.active %>
+</p>
+
+<p>
+  <strong>Primary:</strong>
+  <%= @guardian.primary %>
+</p>
+
+<p>
+  <strong>Given Name 1:</strong>
+  <%= @guardian.given_name1 %>
+</p>
+
+<p>
+  <strong>Given Name 2:</strong>
+  <%= @guardian.given_name2 %>
+</p>
+
+<p>
+  <strong>Family Name 1:</strong>
+  <%= @guardian.family_name1 %>
+</p>
+
+<p>
+  <strong>Family Name 2:</strong>
+  <%= @guardian.family_name2 %>
+</p>
+
+<p>
+  <strong>Preferred Name:</strong>
+  <%= @guardian.preferred_name %>
+</p>
+
+<p>
+  <strong>Primary Phone:</strong>
+  <%= @guardian.primary_phone %>
+</p>
+
+<p>
+  <strong>Secondary Phone:</strong>
+  <%= @guardian.secondary_phone %>
+</p>
+
+<%= link_to 'Edit', edit_guardian_path(@guardian) %> |
+<%= link_to 'Back', guardians_path %>

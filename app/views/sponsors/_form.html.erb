@@ -1,0 +1,65 @@
+<%= form_for(@sponsor) do |f| %>
+  <% if @sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% @sponsor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :donor_number, 'Donor Number' %><br>
+    <%= f.text_field :donor_number %>
+  </div>
+  <div class="field">
+    <%= f.label :given_name, 'Given Name' %><br>
+    <%= f.text_field :given_name %>
+  </div>
+  <div class="field">
+    <%= f.label :family_name, 'Family Name' %><br>
+    <%= f.text_field :family_name %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :street_address, 'Street Address' %><br>
+    <%= f.text_field :street_address %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_code, 'Postal Code' %><br>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_email, 'Primary Email' %><br>
+    <%= f.text_field :primary_email %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_email, 'Secondary Email' %><br>
+    <%= f.text_field :secondary_email %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_phone, 'Primary Phone' %><br>
+    <%= f.text_field :primary_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_phone, 'Secondary Phone' %><br>
+    <%= f.text_field :secondary_phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

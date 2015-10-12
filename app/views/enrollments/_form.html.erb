@@ -1,0 +1,114 @@
+<%= form_for(@enrollment) do |f| %>
+  <% if @enrollment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+
+      <ul>
+      <% @enrollment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :school_year, 'School Year' %><br>
+    <%= f.text_field :school_year %>
+  </div>
+  <div class="field">
+    <%= f.label :child_id %><br>
+    <%= f.number_field :child_id %>
+  </div>
+  <div class="field">
+    <%= f.label :child_code, 'Child Code' %><br>
+    <%= f.text_field :child_code %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsor_id %><br>
+    <%= f.number_field :sponsor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsor_code, 'Sponsor Code' %><br>
+    <%= f.text_field :sponsor_code %>
+  </div>
+  <div class="field">
+    <%= f.label :newyear_shirt_size, 'New Year Shirt Size' %><br>
+    <%= f.text_field :newyear_shirt_size %>
+  </div>
+  <div class="field">
+    <%= f.label :newyear_pant_size, 'New Year Pant Size' %><br>
+    <%= f.text_field :newyear_pant_size %>
+  </div>
+  <div class="field">
+    <%= f.label :newyear_shoe_size, 'New Year Shoe Size' %><br>
+    <%= f.text_field :newyear_shoe_size %>
+  </div>
+  <div class="field">
+    <%= f.label :midyear_shirt_size, 'Mid Year Shirt Size' %><br>
+    <%= f.text_field :midyear_shirt_size %>
+  </div>
+  <div class="field">
+    <%= f.label :midyear_pant_size, 'Mid Year Pant Size' %><br>
+    <%= f.text_field :midyear_pant_size %>
+  </div>
+  <div class="field">
+    <%= f.label :midyear_shoe_size, 'Mid Year Shoe Size' %><br>
+    <%= f.text_field :midyear_shoe_size %>
+  </div>
+  <div class="field">
+    <%= f.label :newyear_attendance_id, 'New Year Attendance' %><br>
+    <%= f.number_field :newyear_attendance_id %>
+  </div>
+  <div class="field">
+    <%= f.label :newyear_attendance_notes, 'New Year Attendance Notes' %><br>
+    <%= f.text_area :newyear_attendance_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :midyear_attendance_id, 'Mid Year Attendance' %><br>
+    <%= f.number_field :midyear_attendance_id %>
+  </div>
+  <div class="field">
+    <%= f.label :midyear_attendance_notes, 'Mid Year Attendance Notes' %><br>
+    <%= f.text_area :midyear_attendance_notes %>
+  </div>
+  <div class="field">
+    <%= f.check_box :report_card %> <%= f.label :report_card , 'Report Card'%>
+  </div>
+  <div class="field">
+    <%= f.label :report_notes, 'Report Notes' %><br>
+    <%= f.text_area :report_notes %>
+  </div>
+  <div class="field">
+    <%= f.check_box :work_form %> <%= f.label :work_form, 'Work Form' %>
+
+  </div>
+  <div class="field">
+    <%= f.label :work_form_notes, 'Work Form Notes' %><br>
+    <%= f.text_area :work_form_notes %>
+  </div>
+  <div class="field">
+    <%= f.check_box :pass %> <%= f.label :pass, 'Pass' %>
+
+  </div>
+  <div class="field">
+    <%= f.label :pass_notes, 'Pass Notes' %><br>
+    <%= f.text_area :pass_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :grades %><br>
+    <%= f.text_field :grades %>
+  </div>
+  <div class="field">
+    <%= f.label :grades_notes, 'Grade Notes' %><br>
+    <%= f.text_area :grades_notes %>
+  </div>
+  <div class="field">
+    <%= f.check_box :letter %> <%= f.label :letter %>
+  </div>
+  <div class="field">
+    <%= f.check_box :not_included %> <%= f.label :not_included, 'Not Included' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

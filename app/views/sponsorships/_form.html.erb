@@ -1,0 +1,37 @@
+<%= form_for(@sponsorship) do |f| %>
+  <% if @sponsorship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsorship.errors.count, "error") %> prohibited this sponsorship from being saved:</h2>
+
+      <ul>
+      <% @sponsorship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :school_year, 'School Year' %><br>
+    <%= f.text_field :school_year %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsor_id %><br>
+    <%= f.number_field :sponsor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sponsor_code, 'Sponsor Code' %><br>
+    <%= f.text_field :sponsor_code %>
+  </div>
+  <div class="field">
+    <%= f.label :number_children, 'Number of Children' %><br>
+    <%= f.number_field :number_children %>
+  </div>
+  <div class="field">
+    <%= f.label :dollar_amount, 'Dollar Amount' %><br>
+    <%= f.number_field :dollar_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

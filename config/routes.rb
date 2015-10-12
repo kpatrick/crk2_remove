@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :children
+  resources :guardians
+  resources :families
+  resources :communities
+  resources :enrollments
+  resources :sponsorships
+  resources :sponsors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

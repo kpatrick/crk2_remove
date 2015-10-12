@@ -1,0 +1,21 @@
+<h1>Showing Family</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Community:</strong>
+  <%= @family.community_id %>
+</p>
+
+<p>
+  <strong>Community Code:</strong>
+  <%= @family.community_code %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @family.notes %>
+</p>
+
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Back', families_path %>

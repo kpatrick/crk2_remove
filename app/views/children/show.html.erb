@@ -1,0 +1,61 @@
+<h1>Showing Child</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @child.code %>
+</p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @child.family_id %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @child.notes %>
+</p>
+
+<p>
+  <strong>Given Name 1:</strong>
+  <%= @child.given_name1 %>
+</p>
+
+<p>
+  <strong>Given Name 2:</strong>
+  <%= @child.given_name2 %>
+</p>
+
+<p>
+  <strong>Family Name 1:</strong>
+  <%= @child.family_name1 %>
+</p>
+
+<p>
+  <strong>Family Name 2:</strong>
+  <%= @child.family_name2 %>
+</p>
+
+<p>
+  <strong>Preferred Name:</strong>
+  <%= @child.preferred_name %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @child.dob %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @child.status %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @child.gender %>
+</p>
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

@@ -1,11 +1,5 @@
 source 'https://rubygems.org'
 
-# db for ms sql express
-gem 'activerecord-jdbcmssql-adapter', platform: :jruby
-gem 'activerecord-jdbc-adapter', platform: :jruby
-
-# timezone info needed for Windows
-gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.12'
@@ -36,3 +30,5 @@ gem 'sdoc', '~> 0.4.0',                              group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'ruby-debug'

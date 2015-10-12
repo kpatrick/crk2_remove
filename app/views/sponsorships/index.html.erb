@@ -1,0 +1,31 @@
+<h1>Listing Sponsorships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>School Year</th>
+      <th>Sponsor</th>
+      <th>Sponsor Code</th>
+      <th>Number of Children</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sponsorships.each do |sponsorship| %>
+      <tr>
+        <td><%= sponsorship.school_year %></td>
+        <td><%= sponsorship.sponsor_id %></td>
+        <td><%= sponsorship.sponsor_code %></td>
+        <td><%= sponsorship.number_children %></td>
+        <td><%= link_to 'Show', sponsorship %></td>
+        <td><%= link_to 'Edit', edit_sponsorship_path(sponsorship) %></td>
+        <td><%= link_to 'Destroy', sponsorship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sponsorship', new_sponsorship_path %>

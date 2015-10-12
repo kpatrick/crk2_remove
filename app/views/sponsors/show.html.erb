@@ -1,0 +1,66 @@
+<h1>Showing Sponsor</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @sponsor.code %>
+</p>
+
+<p>
+  <strong>Donor Number:</strong>
+  <%= @sponsor.donor_number %>
+</p>
+
+<p>
+  <strong>Given Name:</strong>
+  <%= @sponsor.given_name %>
+</p>
+
+<p>
+  <strong>Family Name:</strong>
+  <%= @sponsor.family_name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @sponsor.link %>
+</p>
+
+<p>
+  <strong>Street Address:</strong>
+  <%= @sponsor.street_address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @sponsor.city %>
+</p>
+
+<p>
+  <strong>Postal Code:</strong>
+  <%= @sponsor.postal_code %>
+</p>
+
+<p>
+  <strong>Primary Email:</strong>
+  <%= @sponsor.primary_email %>
+</p>
+
+<p>
+  <strong>Secondary Email:</strong>
+  <%= @sponsor.secondary_email %>
+</p>
+
+<p>
+  <strong>Primary Phone:</strong>
+  <%= @sponsor.primary_phone %>
+</p>
+
+<p>
+  <strong>Secondary Phone:</strong>
+  <%= @sponsor.secondary_phone %>
+</p>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>

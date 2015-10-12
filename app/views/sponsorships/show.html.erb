@@ -1,0 +1,31 @@
+<h1>Showing Sponsorship</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>School Year:</strong>
+  <%= @sponsorship.school_year %>
+</p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @sponsorship.sponsor_id %>
+</p>
+
+<p>
+  <strong>Sponsor Code:</strong>
+  <%= @sponsorship.sponsor_code %>
+</p>
+
+<p>
+  <strong>Number of Children:</strong>
+  <%= @sponsorship.number_children %>
+</p>
+
+<p>
+  <strong>Dollar Amount:</strong>
+  <%= @sponsorship.dollar_amount %>
+</p>
+
+<%= link_to 'Edit', edit_sponsorship_path(@sponsorship) %> |
+<%= link_to 'Back', sponsorships_path %>

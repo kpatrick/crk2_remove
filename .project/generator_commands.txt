@@ -1,0 +1,13 @@
+jruby -S rails g scaffold sponsors code:string donor_number:string given_name:string family_name:string link:string street_address:string city:string postal_code:string primary_email:string secondary_email:string primary_phone:string secondary_phone:string
+
+jruby -S rails g scaffold sponsorships school_year:string sponsor_id:integer sponsor_code:string number_children:integer dollar_amount:integer
+
+jruby -S rails g scaffold enrollments school_year:string child_id:integer child_code:string sponsor_id:integer sponsor_code:string newyear_shirt_size:string newyear_pant_size:string newyear_shoe_size:string midyear_shirt_size:string midyear_pant_size:string midyear_shoe_size:string newyear_attendance_id:integer newyear_attendance_notes:text midyear_attendance_id:integer midyear_attendance_notes:text report_card:boolean report_notes:text work_form:boolean work_form_notes:text pass:boolean pass_notes:text grades:string grades_notes:text letter:boolean not_included:boolean
+
+jruby -S rails g scaffold communities code:string name:string
+
+jruby -S rails g scaffold families community_id:integer community_code:string notes:text
+
+jruby -S rails g scaffold guardians family_id:integer relationship:string relationship_id:integer active:boolean primary:boolean given_name1:string given_name2:string family_name1:string family_name2:string preferred_name:string primary_phone:string secondary_phone:string
+
+jruby -S rails g scaffold children code:string family_id:integer notes:text given_name1:string given_name2:string family_name1:string family_name2:string preferred_name:string dob:date status:string gender:string
