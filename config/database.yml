@@ -41,7 +41,7 @@ test:
   username: postgres
   password: password
 
-# production:  # heroku overwrites
+production:  # heroku overwrites
   <<: *default
   database: crk2_prod
   username: postgres
