@@ -32,6 +32,6 @@ gem 'sdoc', '~> 0.4.0',                              group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'ruby-debug'
+gem 'ruby-debug', group: [:development, :test]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'puma'
