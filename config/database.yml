@@ -23,6 +23,9 @@
 #  database: db/production.sqlite3
 
 default: &default
+  # adapter: sqlite3
+  # adapter: jdbc
+  # driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
@@ -33,7 +36,10 @@ development:
   <<: *default
   database: crk2_dev
   username: postgres
-  password: password
+  password: password  
+  #url: jdbc:sqlserver://localhost:1433;databaseName=crk2_dev
+  #username: crk_app_login
+  #password: password
 
 test:
   <<: *default
