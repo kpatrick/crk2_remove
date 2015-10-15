@@ -35,3 +35,4 @@ gem 'sdoc', '~> 0.4.0',                              group: :doc
 gem 'ruby-debug', group: [:development, :test]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
 gem 'puma'
+gem 'rails_12factor', group: :production
