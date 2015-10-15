@@ -7,7 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
-/.project_info
+/.project-info
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
