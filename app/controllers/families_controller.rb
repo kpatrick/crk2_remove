@@ -10,6 +10,7 @@ class FamiliesController < ApplicationController
   # GET /families/1
   # GET /families/1.json
   def show
+    @community = @family.community
   end
 
   # GET /families/new
@@ -69,6 +70,6 @@ class FamiliesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def family_params
-      params.require(:family).permit(:community_id, :community_code, :notes)
+      params.require(:family).permit(:community_id, :community_code, :notes, :name)
     end
 end

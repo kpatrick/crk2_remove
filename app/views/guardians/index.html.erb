@@ -5,7 +5,6 @@
     <tr>
       <th>Family</th>
       <th>Relationship</th>
-      <th>Relationship</th>
       <th>Active</th>
       <th>Primary</th>
       <th>Given Name 1</th>
@@ -20,16 +19,15 @@
   <tbody>
     <% @guardians.each do |guardian| %>
       <tr>
-        <td><%= guardian.family_id %></td>
-        <td><%= guardian.relationship %></td>
-        <td><%= guardian.relationship_id %></td>
+        <td><%= guardian.family.name %></td>
+        <td><%= Guardian::RELATIONSHIPS_MAP[guardian.relationship_id] %></td>
         <td><%= guardian.active %></td>
         <td><%= guardian.primary %></td>
         <td><%= guardian.given_name1 %></td>
         <td><%= guardian.given_name2 %></td>
         <td><%= guardian.family_name1 %></td>
         <td><%= guardian.family_name2 %></td>
-        <td><%= guardian.preferred_name %></td>        
+        <td><%= guardian.preferred_name %></td>
         <td><%= link_to 'Show', guardian %></td>
         <td><%= link_to 'Edit', edit_guardian_path(guardian) %></td>
         <td><%= link_to 'Destroy', guardian, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,3 +39,5 @@
 <br>
 
 <%= link_to 'New Guardian', new_guardian_path %>
+<br>
+<%= link_to 'Home', {controller: :welcome, action: :index} %>

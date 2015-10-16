@@ -4,17 +4,12 @@
 
 <p>
   <strong>Family:</strong>
-  <%= @guardian.family_id %>
+  <%= @guardian.family.name %>
 </p>
 
 <p>
   <strong>Relationship:</strong>
-  <%= @guardian.relationship %>
-</p>
-
-<p>
-  <strong>Relationship:</strong>
-  <%= @guardian.relationship_id %>
+  <%= Guardian::RELATIONSHIPS_MAP[@guardian.relationship_id] %>
 </p>
 
 <p>

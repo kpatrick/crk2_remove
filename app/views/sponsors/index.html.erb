@@ -22,7 +22,7 @@
         <td><%= sponsor.given_name %></td>
         <td><%= sponsor.family_name %></td>
         <td><%= sponsor.link %></td>
-        <td><%= sponsor.city %></td>        
+        <td><%= sponsor.city %></td>
         <td><%= link_to 'Show', sponsor %></td>
         <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
         <td><%= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,3 +34,5 @@
 <br>
 
 <%= link_to 'New Sponsor', new_sponsor_path %>
+<br>
+<%= link_to 'Home', {controller: :welcome, action: :index} %>

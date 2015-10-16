@@ -10,6 +10,7 @@ class GuardiansController < ApplicationController
   # GET /guardians/1
   # GET /guardians/1.json
   def show
+    @family = @guardian.family
   end
 
   # GET /guardians/new

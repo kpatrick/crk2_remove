@@ -12,22 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :family_id %><br>
-    <%= f.number_field :family_id %>
+  <% families_array = Family.all.order(name: :asc).map{|f| ["#{f.name}", f.id]}%>
+  <%= f.label :family_id, 'Family' %><br><%= f.select(:family_id, families_array) %>
   </div>
+
   <div class="field">
-    <%= f.label :relationship %><br>
-    <%= f.text_field :relationship %>
+  <% relationships_array = Guardian::RELATIONSHIPS_ARRAY %>
+  <%= f.label :relationship_id, 'Relationship' %><br><%= f.select(:relationship_id, relationships_array) %>
   </div>
-  <div class="field">
-    <%= f.label :relationship_id %><br>
-    <%= f.number_field :relationship_id %>
-  </div>
+
   <div class="field">
     <%= f.check_box :active %> <%= f.label :active %>
   </div>
   <div class="field">
-    <%= f.check_box :primary %> <%= f.label :primary %>    
+    <%= f.check_box :primary %> <%= f.label :primary %>
   </div>
   <div class="field">
     <%= f.label :given_name1, 'Given Name 1' %><br>
