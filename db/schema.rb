@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151016055326) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "children", force: true do |t|
     t.string   "code"
     t.integer  "family_id"
