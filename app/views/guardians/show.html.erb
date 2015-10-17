@@ -4,7 +4,7 @@
 
 <p>
   <strong>Family:</strong>
-  <%= @guardian.family.name %>
+  <%= @guardian.family.try(:name) %>
 </p>
 
 <p>

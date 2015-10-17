@@ -1,6 +1,6 @@
 <h1>Listing Guardians</h1>
 
-<table>
+<table border=1 cellpadding=10>
   <thead>
     <tr>
       <th>Family</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @guardians.each do |guardian| %>
       <tr>
-        <td><%= guardian.family.name %></td>
+        <td><%= guardian.family.try(:name) %></td>
         <td><%= Guardian::RELATIONSHIPS_MAP[guardian.relationship_id] %></td>
         <td><%= guardian.active %></td>
         <td><%= guardian.primary %></td>
