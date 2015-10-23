@@ -4,7 +4,7 @@ class GuardiansController < ApplicationController
   # GET /guardians
   # GET /guardians.json
   def index
-    @guardians = Guardian.all
+    @guardians = Guardian.all.includes(family: [:community]).order("communities.code ASC", "families.name ASC")
   end
 
   # GET /guardians/1
@@ -70,6 +70,6 @@ class GuardiansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guardian_params
-      params.require(:guardian).permit(:family_id, :relationship, :relationship_id, :active, :primary, :given_name1, :given_name2, :family_name1, :family_name2, :preferred_name, :primary_phone, :secondary_phone)
+      params.require(:guardian).permit(:family_id, :relationship, :active, :primary, :given_name1, :given_name2, :family_name1, :family_name2, :preferred_name, :primary_phone, :secondary_phone)
     end
 end

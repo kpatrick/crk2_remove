@@ -1,6 +1,4 @@
-<h1>Editing Community</h1>
+<%= link_to 'Show', @community %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+<h1>Community</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @community %> |
-<%= link_to 'Back', communities_path %>

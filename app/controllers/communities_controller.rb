@@ -4,12 +4,13 @@ class CommunitiesController < ApplicationController
   # GET /communities
   # GET /communities.json
   def index
-    @communities = Community.all
+    @communities = Community.all.order(code: :asc)
   end
 
   # GET /communities/1
   # GET /communities/1.json
-  def show
+  def show  
+    @families = Family.joins(:community).where("communities.code = ?", @community.code).order("families.name ASC")
   end
 
   # GET /communities/new

@@ -1,6 +1,8 @@
-<h1>Listing Communities</h1>
+<%= link_to 'New', new_community_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
 
-<table border=1 cellpadding=10>
+<h1>Communities</h1>
+
+<table>
   <thead>
     <tr>
       <th>Code</th>
@@ -21,9 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Community', new_community_path %>
-<br>
-<%= link_to 'Home', {controller: :welcome, action: :index} %>

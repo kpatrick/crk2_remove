@@ -1,10 +1,14 @@
-<h1>Showing Family</h1>
+<%= link_to 'Edit', edit_family_path(@family) %> |
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Community', @community %>
+
+<h1>Family</h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Community:</strong>
-  <%= "#{@community.code} #{@community.name}" %>
+  <%= link_to "#{@community.try(:code)}", @community %>
 </p>
 
 <p>
@@ -16,6 +20,70 @@
   <strong>Notes:</strong>
   <%= @family.notes %>
 </p>
+<br>
 
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Back', families_path %>
+<% if @guardians.present? %>
+<h3>Guardians</h3>
+
+<table border=1 cellpadding=10>
+  <thead>
+    <tr>
+      <th>Family Names</th>
+      <th>Given Names</th>
+      <th>Preferred Name</th>
+      <th>Relationship</th>
+      <th>Active</th>
+      <th>Primary</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guardians.each do |guardian| %>
+      <tr>
+        <td><%= guardian.family_name1 %> <%= guardian.family_name2 %></td>
+        <td><%= guardian.given_name1 %> <%= guardian.given_name2 %></td>
+        <td><%= guardian.preferred_name %></td>
+        <td><%= Guardian::RELATIONSHIPS_MAP[guardian.relationship] %></td>
+        <td><%= guardian.active %></td>
+        <td><%= guardian.primary %></td>
+        <td><%= link_to 'Show', guardian %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<% if @children.present? %>
+<h3>Children</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Family Names</th>
+      <th>Given Names</th>
+      <th>Preferred Name</th>
+      <th>DOB</th>
+      <th>Status</th>
+      <th>Gender</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.each do |child| %>
+      <tr>
+        <td><%= child.code %></td>
+        <td><%= child.family_name1 %> <%= child.family_name2 %></td>
+        <td><%= child.given_name1 %> <%= child.given_name2 %></td>
+        <td><%= child.preferred_name %></td>
+        <td><%= child.dob %></td>
+        <td><%= Child::STATUSES_MAP[child.status] %></td>
+        <td><%= Child::GENDERS_MAP[child.gender] %></td>
+        <td><%= link_to 'Show', child %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

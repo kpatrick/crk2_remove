@@ -12,28 +12,11 @@
   <% end %>
 
   <div class="field">
-  <% families_array = Family.all.order(name: :asc).map{|f| ["#{f.name}", f.id]}%>
+  <%
+  families_array = Family.all.includes(:community).order("communities.name ASC", "families.name ASC").map{|f| ["#{f.community.try(:code)} - #{f.name}", f.id]}
+  families_array.insert(0, ["", nil])
+  %>
   <%= f.label :family_id, 'Family' %><br><%= f.select(:family_id, families_array) %>
-  </div>
-
-  <div class="field">
-  <% relationships_array = Guardian::RELATIONSHIPS_ARRAY %>
-  <%= f.label :relationship_id, 'Relationship' %><br><%= f.select(:relationship_id, relationships_array) %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :active %> <%= f.label :active %>
-  </div>
-  <div class="field">
-    <%= f.check_box :primary %> <%= f.label :primary %>
-  </div>
-  <div class="field">
-    <%= f.label :given_name1, 'Given Name 1' %><br>
-    <%= f.text_field :given_name1 %>
-  </div>
-  <div class="field">
-    <%= f.label :given_name2, 'Given Name 2' %><br>
-    <%= f.text_field :given_name2 %>
   </div>
   <div class="field">
     <%= f.label :family_name1, 'Family Name 1' %><br>
@@ -44,8 +27,29 @@
     <%= f.text_field :family_name2 %>
   </div>
   <div class="field">
+    <%= f.label :given_name1, 'Given Name 1' %><br>
+    <%= f.text_field :given_name1 %>
+  </div>
+  <div class="field">
+    <%= f.label :given_name2, 'Given Name 2' %><br>
+    <%= f.text_field :given_name2 %>
+  </div>
+  <div class="field">
     <%= f.label :preferred_name, 'Preferred Name' %><br>
     <%= f.text_field :preferred_name %>
+  </div>
+  <div class="field">
+  <%
+  relationships_array = Guardian::RELATIONSHIPS_ARRAY.dup
+  relationships_array.insert(0, ["", nil])
+   %>
+  <%= f.label :relationship, 'Relationship' %><br><%= f.select(:relationship, relationships_array) %>
+  </div>
+  <div class="field">
+    <%= f.check_box :active %> <%= f.label :active %>
+  </div>
+  <div class="field">
+    <%= f.check_box :primary %> <%= f.label :primary %>
   </div>
   <div class="field">
     <%= f.label :primary_phone, 'Primary Phone' %><br>

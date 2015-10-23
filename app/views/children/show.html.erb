@@ -1,4 +1,8 @@
-<h1>Showing Child</h1>
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Family', @child.family %>
+
+<h1>Child</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -9,32 +13,17 @@
 
 <p>
   <strong>Family:</strong>
-  <%= @child.family_id %>
+  <%= link_to "#{@child.family.try(:community).try(:code)} - #{@child.family.try(:name)}", @child.family %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
-  <%= @child.notes %>
+  <strong>Family Names:</strong>
+  <%= @child.family_name1 %> <%= @child.family_name2 %>
 </p>
 
 <p>
-  <strong>Given Name 1:</strong>
-  <%= @child.given_name1 %>
-</p>
-
-<p>
-  <strong>Given Name 2:</strong>
-  <%= @child.given_name2 %>
-</p>
-
-<p>
-  <strong>Family Name 1:</strong>
-  <%= @child.family_name1 %>
-</p>
-
-<p>
-  <strong>Family Name 2:</strong>
-  <%= @child.family_name2 %>
+  <strong>Given Names:</strong>
+  <%= @child.given_name1 %> <%= @child.given_name2 %>
 </p>
 
 <p>
@@ -49,13 +38,15 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @child.status %>
+  <%= Child::STATUSES_MAP[@child.status] %>
 </p>
 
 <p>
   <strong>Gender:</strong>
-  <%= @child.gender %>
+  <%= Child::GENDERS_MAP[@child.gender] %>
 </p>
 
-<%= link_to 'Edit', edit_child_path(@child) %> |
-<%= link_to 'Back', children_path %>
+<p>
+  <strong>Notes:</strong>
+  <%= @child.notes %>
+</p>

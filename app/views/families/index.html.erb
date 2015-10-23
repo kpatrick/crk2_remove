@@ -1,10 +1,12 @@
-<h1>Listing Families</h1>
+<%= link_to 'New', new_family_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+
+<h1>Families</h1>
 
 <table border=1 cellpadding=10>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Community</th>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,8 +14,8 @@
   <tbody>
     <% @families.each do |family| %>
       <tr>
+        <td><%= "#{family.community.try(:code)}" %></td>
         <td><%= family.name %></td>
-        <td><%= "#{family.community.code} #{family.community.name}" %></td>
         <td><%= link_to 'Show', family %></td>
         <td><%= link_to 'Edit', edit_family_path(family) %></td>
         <td><%= link_to 'Destroy', family, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,9 +23,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Family', new_family_path %>
-<br>
-<%= link_to 'Home', {controller: :welcome, action: :index} %>

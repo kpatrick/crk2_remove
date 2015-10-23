@@ -1,14 +1,14 @@
-<h1>Listing Children</h1>
+<%= link_to 'New', new_child_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+
+<h1>Children</h1>
 
 <table>
   <thead>
     <tr>
       <th>Code</th>
       <th>Family</th>
-      <th>Given Name1</th>
-      <th>Given Name2</th>
-      <th>Family Name1</th>
-      <th>Family Name2</th>
+      <th>Family Names</th>
+      <th>Given Names</th>
       <th>Preferred Name</th>
       <th>DOB</th>
       <th>Status</th>
@@ -21,15 +21,13 @@
     <% @children.each do |child| %>
       <tr>
         <td><%= child.code %></td>
-        <td><%= child.family_id %></td>
-        <td><%= child.given_name1 %></td>
-        <td><%= child.given_name2 %></td>
-        <td><%= child.family_name1 %></td>
-        <td><%= child.family_name2 %></td>
+        <td><%= child.family.try(:community).try(:code) %> - <%= child.family.try(:name) %></td>
+        <td><%= child.family_name1 %> <%= child.family_name2 %></td>
+        <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.preferred_name %></td>
         <td><%= child.dob %></td>
-        <td><%= child.status %></td>
-        <td><%= child.gender %></td>
+        <td><%= Child::STATUSES_MAP[child.status] %></td>
+        <td><%= Child::GENDERS_MAP[child.gender] %></td>
         <td><%= link_to 'Show', child %></td>
         <td><%= link_to 'Edit', edit_child_path(child) %></td>
         <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -37,9 +35,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Child', new_child_path %>
-<br>
-<%= link_to 'Home', {controller: :welcome, action: :index} %>

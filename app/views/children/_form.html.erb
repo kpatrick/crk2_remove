@@ -15,9 +15,22 @@
     <%= f.label :code %><br>
     <%= f.text_field :code %>
   </div>
+
   <div class="field">
-    <%= f.label :family_id %><br>
-    <%= f.number_field :family_id %>
+  <%
+  families_array = Family.all.includes(:community).order("communities.name ASC", "families.name ASC").map{|f| ["#{f.community.try(:code)} - #{f.name}", f.id]}
+  families_array.insert(0, ["", nil])
+  %>
+  <%= f.label :family_id, 'Family' %><br><%= f.select(:family_id, families_array) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name1, "Family Name 1" %><br>
+    <%= f.text_field :family_name1 %>
+  </div>
+  <div class="field">
+    <%= f.label :family_name2, "Family Name 2" %><br>
+    <%= f.text_field :family_name2 %>
   </div>
   <div class="field">
     <%= f.label :given_name1, "Given Name 1" %><br>
@@ -28,34 +41,32 @@
     <%= f.text_field :given_name2 %>
   </div>
   <div class="field">
-    <%= f.label :family_name1, "Family Name 1" %><br>
-    <%= f.text_field :family_name1 %>
-  </div>
-  <div class="field">
-    <%= f.label :family_name2, "Family Name 2" %><br>
-    <%= f.text_field :family_name2 %>
-  </div>
-  <div class="field">
     <%= f.label :preferred_name, "Preferred Name" %><br>
     <%= f.text_field :preferred_name %>
   </div>
   <div class="field">
     <%= f.label :dob, "Date of Birth" %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, start_year: 1970, end_year: Date.today.year %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+  <%
+  statuses_array = Child::STATUSES_ARRAY.dup
+  statuses_array.insert(0, ["", nil])
+  %>
+  <%= f.label :status, 'Status' %><br><%= f.select(:status, statuses_array) %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+  <%
+  genders_array = Child::GENDERS_ARRAY.dup
+  genders_array.insert(0, ["", nil])
+  %>
+  <%= f.label :gender, 'Gender' %><br><%= f.select(:gender, genders_array) %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
+    <%= f.text_area :notes, cols: 80, rows: 10 %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit %>
   </div>

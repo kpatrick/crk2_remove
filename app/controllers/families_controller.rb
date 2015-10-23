@@ -4,13 +4,15 @@ class FamiliesController < ApplicationController
   # GET /families
   # GET /families.json
   def index
-    @families = Family.all
+    @families = Family.all.includes(:community).order("communities.code")
   end
 
   # GET /families/1
   # GET /families/1.json
   def show
     @community = @family.community
+    @children = Child.joins(:family).where("families.id = ?", @family.id).order("children.code ASC")
+    @guardians = Guardian.joins(:family).where("families.id = ?", @family.id).order("guardians.family_name1 ASC", "guardians.family_name2 ASC")
   end
 
   # GET /families/new

@@ -4,12 +4,13 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index
-    @children = Child.all
+    @children = Child.all.order(:code)
   end
 
   # GET /children/1
   # GET /children/1.json
   def show
+    @community = @child.try(:family).try(:community)
   end
 
   # GET /children/new
