@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 #ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.1.0'
+#ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.12'
 
 # Use jdbcsqlite3 as the database for Active Record
-gem 'activerecord-jdbcsqlite3-adapter'
-
-# Use Microsoft SQL Server
-#gem 'activerecord-jdbcmssql-adapter', platform: :jruby
-#gem 'activerecord-jdbc-adapter', platform: :jruby
+#gem 'activerecord-jdbcsqlite3-adapter'
 
 # Use Postgres
 #gem 'activerecord-jdbcpostgresql-adapter'
+
+# Use Microsoft SQL Server
+gem 'activerecord-jdbcmssql-adapter', platform: :jruby
+gem 'activerecord-jdbc-adapter', platform: :jruby
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
