@@ -15,7 +15,8 @@ class GuardiansController < ApplicationController
 
   # GET /guardians/new
   def new
-    @guardian = Guardian.new
+    @guardian = Guardian.new()
+    @guardian.family_id = params[:family_id] if  params[:family_id] 
   end
 
   # GET /guardians/1/edit

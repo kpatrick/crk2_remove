@@ -22,9 +22,10 @@
 </p>
 <br>
 
-<% if @guardians.present? %>
 <h3>Guardians</h3>
+<%= link_to 'New', {controller: :guardians, action: :new, family_id: @family.id} %>
 
+<% if @guardians.present? %>
 <table border=1 cellpadding=10>
   <thead>
     <tr>
@@ -54,9 +55,10 @@
 </table>
 <% end %>
 
-<% if @children.present? %>
 <h3>Children</h3>
+<%= link_to 'New', {controller: :children, action: :new, family_id: @family.id} %>
 
+<% if @children.present? %>
 <table>
   <thead>
     <tr>

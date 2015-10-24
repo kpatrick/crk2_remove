@@ -16,6 +16,7 @@ class ChildrenController < ApplicationController
   # GET /children/new
   def new
     @child = Child.new
+    @child.family_id = params[:family_id] if params[:family_id]
   end
 
   # GET /children/1/edit

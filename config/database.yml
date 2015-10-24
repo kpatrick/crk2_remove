@@ -23,32 +23,32 @@
 #  database: db/production.sqlite3
 
 default: &default
-  # adapter: sqlite3
-  # adapter: jdbc
+  adapter: sqlite3
+  #adapter: jdbc
   # driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
-  adapter: postgresql
-  encoding: unicode
+  #adapter: postgresql
+  #encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: 5
+  #pool: 5
 
 development:
   <<: *default
-  database: crk2_dev
-  username: postgres
-  password: password  
+  database: db\crk2_dev.sqlite3
+  #username: postgres
+  #password: password
   #url: jdbc:sqlserver://localhost:1433;databaseName=crk2_dev
   #username: crk_app_login
   #password: password
 
 test:
   <<: *default
-  database: crk2_test
-  username: postgres
-  password: password
+  database: db\crk2_test.sqlite3
+  #username: postgres
+  #password: password
 
 production:  # heroku overwrites
   <<: *default
-  database: crk2_prod
-  username: postgres
-  password: password
+  database: db\crk2_prod.sqlite3
+  #username: postgres
+  #password: password
