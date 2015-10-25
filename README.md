@@ -25,7 +25,7 @@ Software Stack
 * git
  * install Git for Windows https://git-scm.com/download/win
  * change directory to c:\
- * run the command "git clone https://github.com/kpatrick/crk2 c:\crk2" to pull down the latest source code from Github.
+ * run the command "git clone https://github.com/kpatrick/crk2 crk2" to pull down the latest source code from Github.
 
 * rails
  * change directory to c:\crk2
