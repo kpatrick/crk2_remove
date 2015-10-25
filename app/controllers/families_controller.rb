@@ -18,6 +18,7 @@ class FamiliesController < ApplicationController
   # GET /families/new
   def new
     @family = Family.new
+    @family.community_id = params[:community_id] if params[:community_id]
   end
 
   # GET /families/1/edit

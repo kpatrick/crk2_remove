@@ -8,7 +8,6 @@ class Child < ActiveRecord::Base
   STATUSES_MAP = Hash[STATUSES_ARRAY.map{|a| [a[1], a[0]]}]
 
   def analyze_crkcode
-#require("debug");;debugger
     if self.code.present?
       match_data = /^([a-zA-Z]*)([0-9]*)$/.match(self.code)
       if match_data.size == 3
@@ -16,6 +15,9 @@ class Child < ActiveRecord::Base
         self.derived_community = match_data[1]
         self.derived_number = match_data[2].to_i
       end
+    else
+      self.derived_community = nil
+      self.derived_number = nil
     end
   end
 end

@@ -8,8 +8,8 @@ development:
   <<: *default
 
   # sqlite
-  #adapter: sqlite3
-  #database: db\crk2_dev.sqlite3
+  adapter: sqlite3
+  database: db/crk2_dev.sqlite3
 
   # postgres
   #adapter: postgresql
@@ -18,17 +18,17 @@ development:
   #password: password
 
   # sqlserver use url or database
-  adapter: sqlserver
-  database: crk2_dev
-  username: crk_app_login
-  password: password
+  # adapter: sqlserver
+  # database: crk2_dev
+  # username: crk_app_login
+  # password: password
 
 test:
   <<: *default
 
   # sqlite
-  #adapter: sqlite3
-  #database: db\crk2_test.sqlite3
+  adapter: sqlite3
+  database: db/crk2_test.sqlite3
 
   # postgres
   #adapter: postgresql
@@ -37,17 +37,17 @@ test:
   #password: password
 
   # sqlserver
-  adapter: sqlserver
-  database: crk2_test
-  username: crk_app_login
-  password: password
+  # adapter: sqlserver
+  # database: crk2_test
+  # username: crk_app_login
+  # password: password
 
 production:
   <<: *default
 
   # sqlite
-  #adapter: sqlite3
-  #database: db\crk2_prod.sqlite3
+  adapter: sqlite3
+  database: db/crk2_prod.sqlite3
 
   # postgres
   # heroku overwrites
@@ -57,7 +57,7 @@ production:
   #password: password
 
   # sqlserver
-  adapter: sqlserver
-  database: crk2_prod
-  username: crk_app_login
-  password: password
+  # adapter: sqlserver
+  # database: crk2_prod
+  # username: crk_app_login
+  # password: password

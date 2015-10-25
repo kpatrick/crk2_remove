@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:show, :edit, :update, :destroy]
+  before_action :set_community, only: [:show, :edit, :update, :destroy, :next_code]
 
   # GET /communities
   # GET /communities.json
@@ -9,7 +9,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1
   # GET /communities/1.json
-  def show  
+  def show
     @families = Family.joins(:community).where("communities.code = ?", @community.code).order("families.name ASC")
   end
 
@@ -20,6 +20,11 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1/edit
   def edit
+  end
+
+  # GET /communities/1/next_code
+  def next_code
+    @max_code = Child.where("derived_community = ?", @community.code).order("derived_number DESC").first.try(:derived_number) || 0
   end
 
   # POST /communities

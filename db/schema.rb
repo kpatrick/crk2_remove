@@ -15,34 +15,34 @@ ActiveRecord::Schema.define(version: 20151023145553) do
 
   create_table "children", force: true do |t|
     t.string   "code"
-    t.integer  "family_id",         limit: 4
-    t.string   "notes",             limit: 2147483647
+    t.integer  "family_id"
+    t.text     "notes"
     t.string   "given_name1"
     t.string   "given_name2"
     t.string   "family_name1"
     t.string   "family_name2"
     t.string   "preferred_name"
-    t.date     "dob",               limit: 10
+    t.date     "dob"
     t.string   "status"
     t.string   "gender"
-    t.datetime "created_at",        limit: 23
-    t.datetime "updated_at",        limit: 23
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "derived_community"
-    t.integer  "derived_number",    limit: 4
+    t.integer  "derived_number"
   end
 
   create_table "communities", force: true do |t|
     t.string   "code"
     t.string   "name"
-    t.datetime "created_at", limit: 23
-    t.datetime "updated_at", limit: 23
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "enrollments", force: true do |t|
     t.string   "school_year"
-    t.integer  "child_id",                 limit: 4
+    t.integer  "child_id"
     t.string   "child_code"
-    t.integer  "sponsor_id",               limit: 4
+    t.integer  "sponsor_id"
     t.string   "sponsor_code"
     t.string   "newyear_shirt_size"
     t.string   "newyear_pant_size"
@@ -50,37 +50,37 @@ ActiveRecord::Schema.define(version: 20151023145553) do
     t.string   "midyear_shirt_size"
     t.string   "midyear_pant_size"
     t.string   "midyear_shoe_size"
-    t.integer  "newyear_attendance_id",    limit: 4
-    t.string   "newyear_attendance_notes", limit: 2147483647
-    t.integer  "midyear_attendance_id",    limit: 4
-    t.string   "midyear_attendance_notes", limit: 2147483647
+    t.integer  "newyear_attendance_id"
+    t.text     "newyear_attendance_notes"
+    t.integer  "midyear_attendance_id"
+    t.text     "midyear_attendance_notes"
     t.boolean  "report_card"
-    t.string   "report_notes",             limit: 2147483647
+    t.text     "report_notes"
     t.boolean  "work_form"
-    t.string   "work_form_notes",          limit: 2147483647
+    t.text     "work_form_notes"
     t.boolean  "pass"
-    t.string   "pass_notes",               limit: 2147483647
+    t.text     "pass_notes"
     t.string   "grades"
-    t.string   "grades_notes",             limit: 2147483647
+    t.text     "grades_notes"
     t.boolean  "letter"
     t.boolean  "not_included"
-    t.datetime "created_at",               limit: 23
-    t.datetime "updated_at",               limit: 23
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "families", force: true do |t|
-    t.integer  "community_id",   limit: 4
+    t.integer  "community_id"
     t.string   "community_code"
-    t.string   "notes",          limit: 2147483647
-    t.datetime "created_at",     limit: 23
-    t.datetime "updated_at",     limit: 23
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
   end
 
   create_table "guardians", force: true do |t|
-    t.integer  "family_id",       limit: 4
+    t.integer  "family_id"
     t.string   "relationship"
-    t.integer  "relationship_id", limit: 4
+    t.integer  "relationship_id"
     t.boolean  "active"
     t.boolean  "primary"
     t.string   "given_name1"
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 20151023145553) do
     t.string   "preferred_name"
     t.string   "primary_phone"
     t.string   "secondary_phone"
-    t.datetime "created_at",      limit: 23
-    t.datetime "updated_at",      limit: 23
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sponsors", force: true do |t|
@@ -107,18 +107,18 @@ ActiveRecord::Schema.define(version: 20151023145553) do
     t.string   "secondary_email"
     t.string   "primary_phone"
     t.string   "secondary_phone"
-    t.datetime "created_at",      limit: 23
-    t.datetime "updated_at",      limit: 23
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sponsorships", force: true do |t|
     t.string   "school_year"
-    t.integer  "sponsor_id",      limit: 4
+    t.integer  "sponsor_id"
     t.string   "sponsor_code"
-    t.integer  "number_children", limit: 4
-    t.integer  "dollar_amount",   limit: 4
-    t.datetime "created_at",      limit: 23
-    t.datetime "updated_at",      limit: 23
+    t.integer  "number_children"
+    t.integer  "dollar_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

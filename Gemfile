@@ -6,14 +6,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.12'
 
 # Use jdbcsqlite3 as the database for Active Record
-#gem 'activerecord-jdbcsqlite3-adapter'
+gem 'activerecord-jdbcsqlite3-adapter'
 
 # Use Postgres
 #gem 'activerecord-jdbcpostgresql-adapter'
 
 # Use Microsoft SQL Server
-gem 'activerecord-jdbcmssql-adapter', platform: :jruby
-gem 'activerecord-jdbc-adapter', platform: :jruby
+# gem 'activerecord-jdbcmssql-adapter', platform: :jruby
+# gem 'activerecord-jdbc-adapter', platform: :jruby
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

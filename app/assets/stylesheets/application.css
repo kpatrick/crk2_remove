@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+   div.field {
+     margin-top: 15px;
+   }
+
+   table {
+       border-collapse: collapse;
+   }
+   table, td, th {
+       border: 1px solid black;
+   }
+   td, th {
+     padding: 10px;
+   }
+   th {
+     text-align: left;
+   }
+   .future {
+     display: none;
+   }
+
+   input[type=submit] {
+     -webkit-appearance: button;
+     padding:1em;
+     cursor: pointer;
+   }

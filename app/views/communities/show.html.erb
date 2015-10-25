@@ -16,15 +16,12 @@
   <%= @community.name %>
 </p>
 
-<p>
-  <strong>Next Code:</strong>
-  TODO
-</p>
 <br>
 
-<% if @families.present? %>
 <h3>Families</h3>
+<%= link_to 'New', {controller: :families, action: :new, community_id: @community.id} %>
 
+<% if @families.present? %>
 <table border=1 cellpadding=10>
   <thead>
     <tr>
