@@ -39,5 +39,42 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
+
+
+<h3>Children</h3>
+
+<% if @children.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Family</th>
+      <th>Family Names</th>
+      <th>Given Names</th>
+      <th>Preferred Name</th>
+      <th>Date of Birth</th>
+      <th>Status</th>
+      <th>Gender</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.each do |child| %>
+      <tr>
+        <td><%= child.code %></td>
+        <td><%= child.family.try(:community).try(:code) %> - <%= child.family.try(:name) %></td>
+        <td><%= child.family_name1 %> <%= child.family_name2 %></td>
+        <td><%= child.given_name1 %> <%= child.given_name2 %></td>
+        <td><%= child.preferred_name %></td>
+        <td><%= child.dob %></td>
+        <td><%= Child::STATUSES_MAP[child.status] %></td>
+        <td><%= Child::GENDERS_MAP[child.gender] %></td>
+        <td><%= link_to 'Show', child %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>

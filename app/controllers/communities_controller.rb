@@ -11,6 +11,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1.json
   def show
     @families = Family.joins(:community).where("communities.code = ?", @community.code).order("families.name ASC")
+    @children = Child.joins(family: [:community]).where("communities.code = ?", @community.code).order("families.name ASC")
   end
 
   # GET /communities/new
