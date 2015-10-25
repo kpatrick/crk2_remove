@@ -32,4 +32,4 @@ Stack
  * run the command "jruby -S rails server"
  * open http://localhost:3000 to see a default Ruby on Rails page
  * additional flags and commands are need to run in production mode.
-  * set the RAIlS_ENV and SECRET_KEY_BASE system variables, run the assets compilations, setup production database, set the port
+  * set the RAILS_ENV and SECRET_KEY_BASE system variables, run the assets compilations, setup production database, set the port
