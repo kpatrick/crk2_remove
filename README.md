@@ -27,5 +27,4 @@ Stack
  * run the command "jruby -S rails server"
  * open http://localhost:3000 to see a default Ruby on Rails page
 
-* nssm
- * available in the repository, nssm.exe installs a service wrapper around the "jruby -S rails server" command.
+ 
