@@ -1,10 +1,10 @@
 README
 
-Costa Rica Kids
+Costa Rica Kids School Sponsorship Program
 
-Stack
+Software Stack
 
-* Requires Microsoft Windows 8+
+* Tested on Microsoft Windows 8+ and Chrome
 
 * Java
  * install Java 8 JDK from Oracle website http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
@@ -23,13 +23,15 @@ Stack
   * copy said sqljdbc42.jar to C:\jruby-9.0.3.0\sqljdbc42.jar
 
 * git
- * git clone https://github.com/kpatrick/crk2 into c:\crk2
+ * install Git for Windows https://git-scm.com/download/win
+ * change directory to c:\
+ * run the command "git clone https://github.com/kpatrick/crk2 c:\crk2" to pull down the latest source code from Github.
 
 * rails
  * change directory to c:\crk2
- * run the command "jruby -S bundle install"
- * run the command "jruby -S rake db:create db:migrate db:seed"
+ * run the command "jruby -S gem install bundler" as the bundler gem has to be installed as its own step.
+ * run the command "jruby -S bundle install" to pull down the dependencies.
+ * run the command "jruby -S rake db:create db:migrate db:seed" to setup the development and test databases
  * run the command "jruby -S rails server"
- * open http://localhost:3000 to see a default Ruby on Rails page
- * additional flags and commands are need to run in production mode.
-  * set the RAILS_ENV and SECRET_KEY_BASE system variables, run the assets compilations, setup production database, set the port
+ * open http://localhost:3000 to see a default Ruby on Rails page. Control-C the rails server to stop.
+ * additional flags and commands are need to run in production mode. Set the RAILS_ENV and SECRET_KEY_BASE system variables, run the assets compilations, setup production database, set the port.
