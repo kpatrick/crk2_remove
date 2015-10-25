@@ -29,6 +29,12 @@
    th {
      text-align: left;
    }
+   tr:nth-child(even) {
+     background: #EEE;
+   }
+   th {
+     background: #DDD;
+   }
    .future {
      display: none;
    }

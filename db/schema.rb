@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023145553) do
+ActiveRecord::Schema.define(version: 20151025021406) do
 
   create_table "children", force: true do |t|
     t.string   "code"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20151023145553) do
     t.string   "derived_community"
     t.integer  "derived_number"
   end
+
+  add_index "children", ["code"], name: "index_children_on_code", unique: true
 
   create_table "communities", force: true do |t|
     t.string   "code"

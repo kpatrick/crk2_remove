@@ -24,7 +24,8 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1/next_code
   def next_code
-    @max_code = Child.where("derived_community = ?", @community.code).order("derived_number DESC").first.try(:derived_number) || 0
+    max_code = Child.where("derived_community = ?", @community.code).order("derived_number DESC").first.try(:derived_number) || 0
+    @next_code = "#{max_code + 1}"    
   end
 
   # POST /communities

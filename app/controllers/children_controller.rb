@@ -43,7 +43,13 @@ class ChildrenController < ApplicationController
   # PATCH/PUT /children/1.json
   def update
     respond_to do |format|
-      if @child.update(child_params)
+      begin
+        updated = @child.update(child_params)
+      rescue ActiveRecord::RecordNotUnique => e
+        @child.errors[:base] << e.message
+        updated = false
+      end
+      if updated
         format.html { redirect_to @child, notice: 'Child was successfully updated.' }
         format.json { render :show, status: :ok, location: @child }
       else
