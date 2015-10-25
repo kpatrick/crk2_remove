@@ -31,7 +31,7 @@ Software Stack
  * change directory to c:\crk2
  * run the command "jruby -S gem install bundler" as the bundler gem has to be installed as its own step.
  * run the command "jruby -S bundle install" to pull down the dependencies.
- * run the command "jruby -S rake db:create db:migrate db:seed" to setup the development and test databases
- * run the command "jruby -S rails server"
- * open http://localhost:3000 to see a default Ruby on Rails page. Control-C the rails server to stop.
+ * run the command "jruby -S rake db:create db:migrate db:seed" to setup the development and test databases.
+ * run the command "jruby -S rails server" 
+ * open http://localhost:3000 to see the home page of the project. Control-C the rails server to stop.
  * additional flags and commands are need to run in production mode. Set the RAILS_ENV and SECRET_KEY_BASE system variables, run the assets compilations, setup production database, set the port.
