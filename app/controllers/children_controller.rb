@@ -29,7 +29,16 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
 
     respond_to do |format|
-      if @child.save
+      begin
+        saved =  @child.save
+      rescue ActiveRecord::RecordNotUnique => e
+        @child.errors[:base] << e.message
+        saved = false
+      rescue => e
+        @child.errors[:base] << e.message
+        saved = false
+      end
+      if saved
         format.html { redirect_to @child, notice: 'Child was successfully created.' }
         format.json { render :show, status: :created, location: @child }
       else
@@ -48,6 +57,9 @@ class ChildrenController < ApplicationController
       rescue ActiveRecord::RecordNotUnique => e
         @child.errors[:base] << e.message
         updated = false
+      rescue => e
+        @child.errors[:base] << e.message
+        updated = false  
       end
       if updated
         format.html { redirect_to @child, notice: 'Child was successfully updated.' }
