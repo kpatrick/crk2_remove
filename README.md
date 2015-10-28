@@ -18,7 +18,7 @@ Software Stack
   * install with mixed mode authentication
   * create a login crk_app_login with password "password"
   * create a user crk_app_user for said login
-  * activate TCP to listen on port 1433
+  * activate TCP to listen on port 1433. see http://support.webecs.com/kb/a868/how-do-i-configure-sql-server-express-to-allow-remote-tcp-ip-connections-on-port-1433.aspx
   * download the jdbc driver sqljdbc42.jar from https://msdn.microsoft.com/en-us/library/ms378526(v=sql.110).aspx
   * copy said sqljdbc42.jar to C:\jruby-9.0.3.0\sqljdbc42.jar
 
