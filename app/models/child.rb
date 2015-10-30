@@ -2,7 +2,7 @@ class Child < ActiveRecord::Base
   belongs_to :family
   before_save :analyze_code
 
-  GENDERS_ARRAY = [["Male | Hombre", "male"], ["Female | Mujer", "female"]]
+  GENDERS_ARRAY = [["Male (Hombre)", "male"], ["Female (Mujer)", "female"]]
   GENDERS_MAP = Hash[GENDERS_ARRAY.map{|a| [a[1], a[0]]}]
   STATUSES_ARRAY  = [["In Program", "in_program"],["Out of Program", "out_of_program"],["Graduate", "graduate"]]
   STATUSES_MAP = Hash[STATUSES_ARRAY.map{|a| [a[1], a[0]]}]
