@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :family_years
   resources :children
   resources :guardians
   resources :families

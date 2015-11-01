@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Community:</strong>
+  <%= @family_year.community_id %>
+</p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @family_year.family_id %>
+</p>
+
+<p>
+  <strong>School year:</strong>
+  <%= @family_year.school_year %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @family_year.picture %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @family_year.notes %>
+</p>
+
+<%= link_to 'Edit', edit_family_year_path(@family_year) %> |
+<%= link_to 'Back', family_years_path %>
