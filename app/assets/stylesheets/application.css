@@ -35,8 +35,9 @@
    th {
      background: #DDD;
    }
-   .future {
-     display: none;
+
+   div.future a {
+     color: red;
    }
 
    input[type=submit] {

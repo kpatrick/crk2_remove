@@ -22,4 +22,35 @@ class Child < ActiveRecord::Base
       self.code = "crk-#{SecureRandom::hex(7)}"
     end
   end
+
+  def self.load_file(file_name)
+    text=File.open(file_name).read
+    text.gsub!(/\r\n?/, "\n")
+    first = true
+    text.each_line do |line|
+      if !first
+        cols = line.split("\t")
+        f = Family.where(id: cols[2].to_i).first
+        c = Child.new({id: cols[0].to_i,
+          code: cols[1].present? ? cols[1] : nil,
+          family_id: f ? f.id : nil,
+          given_name1: cols[3].present? ? cols[3] : nil,
+          given_name2: cols[4].present? ? cols[4] : nil,
+          family_name1: cols[5].present? ? cols[5] : nil,
+          family_name2: cols[6].present? ? cols[6] : nil,
+          preferred_name: cols[7].present? ? cols[7] : nil,
+          dob: cols[8].present? ? cols[8] : nil,
+          status: cols[9] == "1" ? "in_program" : nil,
+          gender: cols[10] == "M" ? "male" : nil,
+          notes: cols[11].present? ? cols[11] : nil
+          })
+        c.save
+        if !c.errors.blank?
+          puts c.errors
+        end
+      end
+      first = false
+    end
+    nil
+  end
 end
