@@ -4,7 +4,7 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index
-    @children = Child.all.order(:code)
+    @children = Child.all.includes(family: [:community]).order(:code)
   end
 
   # GET /children/1
@@ -59,7 +59,7 @@ class ChildrenController < ApplicationController
         updated = false
       rescue => e
         @child.errors[:base] << e.message
-        updated = false  
+        updated = false
       end
       if updated
         format.html { redirect_to @child, notice: 'Child was successfully updated.' }

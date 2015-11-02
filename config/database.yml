@@ -12,10 +12,10 @@ development:
   #database: db/crk2_dev.sqlite3
 
   # postgres
-  #adapter: postgresql
-  #database: crk2_dev
-  #username: postgres
-  #password: password
+  adapter: postgresql
+  database: crk2_dev
+  username: postgres
+  password: password
 
   # sqlserver use url or database
   #adapter: sqlserver

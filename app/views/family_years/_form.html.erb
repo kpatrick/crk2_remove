@@ -1,7 +1,7 @@
 <%= form_for(@family_year) do |f| %>
   <% if @family_year.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@family_year.errors.count, "error") %> prohibited this family_year from being saved:</h2>
+      <h2><%= pluralize(@family_year.errors.count, "error") %> prohibited this Family Year from being saved:</h2>
 
       <ul>
       <% @family_year.errors.full_messages.each do |message| %>
@@ -29,9 +29,9 @@
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_field :notes %>
+    <%= f.text_area :notes, cols: 80, rows: 10 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Family Year" %>
   </div>
 <% end %>
