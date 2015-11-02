@@ -4,21 +4,25 @@ class FamilyYearsController < ApplicationController
   # GET /family_years
   # GET /family_years.json
   def index
-    @family_years = FamilyYear.all
+    @family_years = FamilyYear.all.includes(family: [:community]).order("communities.code ASC", "families.name ASC")
   end
 
   # GET /family_years/1
   # GET /family_years/1.json
   def show
+    @family = @family_year.family
   end
 
   # GET /family_years/new
   def new
     @family_year = FamilyYear.new
+    @family_year.family_id = params[:family_id] if  params[:family_id]
+    @family = Family.where(id: @family_year.family_id).first
   end
 
   # GET /family_years/1/edit
   def edit
+    @family = @family_year.family
   end
 
   # POST /family_years

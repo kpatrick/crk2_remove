@@ -13,6 +13,7 @@ class FamiliesController < ApplicationController
     @community = @family.community
     @children = Child.joins(:family).where("families.id = ?", @family.id).order("children.code ASC")
     @guardians = Guardian.joins(:family).where("families.id = ?", @family.id).order("guardians.family_name1 ASC", "guardians.family_name2 ASC")
+    @family_years = FamilyYear.joins(:family).where("families.id = ?", @family.id).order("family_years.school_year ASC")    
   end
 
   # GET /families/new

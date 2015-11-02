@@ -89,3 +89,28 @@
   </tbody>
 </table>
 <% end %>
+
+<h3>Family Years</h3>
+<%= link_to 'New', {controller: :family_years, action: :new, family_id: @family.id} %>
+
+<% if @family_years.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>School Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @family_years.each do |family_year| %>
+      <tr>
+        <td><%= family_year.school_year %></td>
+        <td><%= link_to 'Show', family_year %></td>
+        <td><%= link_to 'Edit', edit_family_year_path(family_year) %></td>
+        <td><%= link_to 'Destroy', family_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

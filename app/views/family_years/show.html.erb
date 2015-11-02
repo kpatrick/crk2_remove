@@ -1,13 +1,12 @@
+<%= link_to 'Edit', edit_family_year_path(@family_year) %> |
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Family', @family_year.family %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Community:</strong>
-  <%= @family_year.community_id %>
-</p>
-
-<p>
   <strong>Family:</strong>
-  <%= @family_year.family_id %>
+  <%= link_to "#{@family.try(:community).try(:code)} - #{@family.try(:name)}", @family %>
 </p>
 
 <p>
@@ -24,6 +23,3 @@
   <strong>Notes:</strong>
   <%= @family_year.notes %>
 </p>
-
-<%= link_to 'Edit', edit_family_year_path(@family_year) %> |
-<%= link_to 'Back', family_years_path %>

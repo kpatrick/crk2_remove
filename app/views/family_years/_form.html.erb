@@ -12,12 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :community_id %><br>
-    <%= f.number_field :community_id %>
-  </div>
-  <div class="field">
-    <%= f.label :family_id %><br>
-    <%= f.number_field :family_id %>
+    <strong>Family: </strong>
+    <%= link_to "#{@family.try(:community).try(:code)} - #{@family.try(:name)}", @family %>
+    <%= f.hidden_field :family_id %>
   </div>
   <div class="field">
     <%= f.label :school_year %><br>
@@ -32,6 +29,6 @@
     <%= f.text_area :notes, cols: 80, rows: 10 %>
   </div>
   <div class="actions">
-    <%= f.submit "Create Family Year" %>
+    <%= f.submit %>
   </div>
 <% end %>

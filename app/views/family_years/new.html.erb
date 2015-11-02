@@ -1,5 +1,6 @@
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Family', @family_year.family %>
+
 <h1>New Family Year</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', family_years_path %>
