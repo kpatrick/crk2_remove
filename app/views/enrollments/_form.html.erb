@@ -61,7 +61,7 @@
   </div>
   <div class="field">
     <%= f.label :newyear_attendance_notes, 'New Year Attendance Notes' %><br>
-    <%= f.text_area :newyear_attendance_notes %>
+    <%= f.text_area :newyear_attendance_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.label :midyear_attendance_id, 'Mid Year Attendance' %><br>
@@ -69,22 +69,21 @@
   </div>
   <div class="field">
     <%= f.label :midyear_attendance_notes, 'Mid Year Attendance Notes' %><br>
-    <%= f.text_area :midyear_attendance_notes %>
+    <%= f.text_area :midyear_attendance_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.check_box :report_card %> <%= f.label :report_card , 'Report Card'%>
   </div>
   <div class="field">
     <%= f.label :report_notes, 'Report Notes' %><br>
-    <%= f.text_area :report_notes %>
+    <%= f.text_area :report_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.check_box :work_form %> <%= f.label :work_form, 'Work Form' %>
-
   </div>
   <div class="field">
     <%= f.label :work_form_notes, 'Work Form Notes' %><br>
-    <%= f.text_area :work_form_notes %>
+    <%= f.text_area :work_form_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.check_box :pass %> <%= f.label :pass, 'Pass' %>
@@ -92,15 +91,15 @@
   </div>
   <div class="field">
     <%= f.label :pass_notes, 'Pass Notes' %><br>
-    <%= f.text_area :pass_notes %>
+    <%= f.text_area :pass_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.label :grades %><br>
     <%= f.text_field :grades %>
   </div>
   <div class="field">
-    <%= f.label :grades_notes, 'Grade Notes' %><br>
-    <%= f.text_area :grades_notes %>
+    <%= f.label :grades_notes, 'Grade Notes' %><br>    
+    <%= f.text_area :grades_notes, cols: 80, rows: 10 %>
   </div>
   <div class="field">
     <%= f.check_box :letter %> <%= f.label :letter %>
