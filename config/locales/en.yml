@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home: "Home"
   activerecord:
     models:
       family_year: "Family Year"

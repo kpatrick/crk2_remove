@@ -18,26 +18,28 @@
   %>
   <%= f.label :family_id, 'Family' %><br><%= f.select(:family_id, families_array) %>
   </div>
-  <div class="field">
+  <div style="clear:both;"></div>
+  <div class="field float">
     <%= f.label :family_name1, 'Family Name 1' %><br>
     <%= f.text_field :family_name1 %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.label :family_name2, 'Family Name 2' %><br>
     <%= f.text_field :family_name2 %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.label :given_name1, 'Given Name 1' %><br>
     <%= f.text_field :given_name1 %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.label :given_name2, 'Given Name 2' %><br>
     <%= f.text_field :given_name2 %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.label :preferred_name, 'Preferred Name' %><br>
     <%= f.text_field :preferred_name %>
   </div>
+  <div style="clear:both;"></div>
   <div class="field">
   <%
   relationships_array = Guardian::RELATIONSHIPS_ARRAY.dup
@@ -45,20 +47,23 @@
    %>
   <%= f.label :relationship, 'Relationship' %><br><%= f.select(:relationship, relationships_array) %>
   </div>
-  <div class="field">
+  <div style="clear:both;"></div>
+  <div class="field float">
     <%= f.check_box :active %> <%= f.label :active %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.check_box :primary %> <%= f.label :primary %>
   </div>
-  <div class="field">
+  <div style="clear:both;"></div>
+  <div class="field float">
     <%= f.label :primary_phone, 'Primary Phone' %><br>
     <%= f.text_field :primary_phone %>
   </div>
-  <div class="field">
+  <div class="field float">
     <%= f.label :secondary_phone, 'Secondary Phone' %><br>
     <%= f.text_field :secondary_phone %>
   </div>
+  <div style="clear:both;"></div>
   <div class="actions">
     <%= f.submit %>
   </div>

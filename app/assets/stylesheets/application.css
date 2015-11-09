@@ -17,6 +17,10 @@
      margin-top: 15px;
    }
 
+   div.field.float {
+     float: left;
+     margin-right: 10px;
+   }
    table {
        border-collapse: collapse;
    }
