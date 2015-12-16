@@ -39,11 +39,9 @@ class ChildrenController < ApplicationController
         saved = false
       end
       if saved
-        format.html { redirect_to @child, notice: 'Child was successfully created.' }
-        format.json { render :show, status: :created, location: @child }
+        format.html { redirect_to @child, notice: t('child_created') }
       else
         format.html { render :new }
-        format.json { render json: @child.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,11 +60,9 @@ class ChildrenController < ApplicationController
         updated = false
       end
       if updated
-        format.html { redirect_to @child, notice: 'Child was successfully updated.' }
-        format.json { render :show, status: :ok, location: @child }
+        format.html { redirect_to @child, notice: t("child_updated")}
       else
         format.html { render :edit }
-        format.json { render json: @child.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,10 +70,10 @@ class ChildrenController < ApplicationController
   # DELETE /children/1
   # DELETE /children/1.json
   def destroy
+    family = @child.family
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to children_url, notice: 'Child was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to family, notice: t("child_deleted") }
     end
   end
 

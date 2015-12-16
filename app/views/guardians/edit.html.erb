@@ -2,3 +2,6 @@
 <h1>Guardian</h1>
 
 <%= render 'form' %>
+<% if @user && @user.can_delete_record? %>
+<div class="delete-record"><%= link_to t('destroy'), @guardian, method: :delete, data: { confirm: t('confirm_destroy') } %></div>
+<% end %>

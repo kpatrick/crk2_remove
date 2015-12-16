@@ -10,6 +10,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1
   # GET /sponsors/1.json
   def show
+    @sponsorships = Sponsorship.joins(:sponsor).where("sponsors.id = ?", @sponsor.id).order("sponsorships.school_year ASC")
   end
 
   # GET /sponsors/new
@@ -29,10 +30,8 @@ class SponsorsController < ApplicationController
     respond_to do |format|
       if @sponsor.save
         format.html { redirect_to @sponsor, notice: 'Sponsor was successfully created.' }
-        format.json { render :show, status: :created, location: @sponsor }
       else
         format.html { render :new }
-        format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +42,8 @@ class SponsorsController < ApplicationController
     respond_to do |format|
       if @sponsor.update(sponsor_params)
         format.html { redirect_to @sponsor, notice: 'Sponsor was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sponsor }
       else
         format.html { render :edit }
-        format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +54,6 @@ class SponsorsController < ApplicationController
     @sponsor.destroy
     respond_to do |format|
       format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

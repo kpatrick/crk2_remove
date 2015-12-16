@@ -44,6 +44,25 @@
      color: red;
    }
 
+   div.subordinate {
+     /* display: none; */
+   }
+
+   span.userinfo {
+     /* margin-right: 1ex; */
+   }
+
+   div.delete-record {
+     margin-top: 20px;
+   }
+
+   div.delete-record a {
+     color: red;
+     background-color: pink;
+     font-weight: bold;
+     padding: 10px;
+     border: 1px solid red;
+   }
    input[type=submit] {
      -webkit-appearance: button;
      padding:1em;

@@ -33,10 +33,8 @@ class FamilyYearsController < ApplicationController
     respond_to do |format|
       if @family_year.save
         format.html { redirect_to @family_year, notice: 'Family year was successfully created.' }
-        format.json { render :show, status: :created, location: @family_year }
       else
         format.html { render :new }
-        format.json { render json: @family_year.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +45,8 @@ class FamilyYearsController < ApplicationController
     respond_to do |format|
       if @family_year.update(family_year_params)
         format.html { redirect_to @family_year, notice: 'Family year was successfully updated.' }
-        format.json { render :show, status: :ok, location: @family_year }
       else
         format.html { render :edit }
-        format.json { render json: @family_year.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,10 +54,10 @@ class FamilyYearsController < ApplicationController
   # DELETE /family_years/1
   # DELETE /family_years/1.json
   def destroy
+    family = @family_year.family
     @family_year.destroy
     respond_to do |format|
-      format.html { redirect_to family_years_url, notice: 'Family year was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to family, notice: 'Family year was successfully destroyed.' }
     end
   end
 

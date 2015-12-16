@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :code %><br>
+    <%= f.label :code, t('code') %><br>
     <%= f.text_field :code %>
     <% if @child.family.try(:community).try(:id) %>
-    <span style="font-size: 10px"><%= link_to 'Next Code', {controller: :communities, action: :next_code, id: @child.family.try(:community).try(:id)}, {"target" => "_blank"} %></span>
+    <span style="font-size: 10px"><%= link_to t('next_code'), {controller: :communities, action: :next_code, id: @child.family.try(:community).try(:id)}, {"target" => "_blank"} %></span>
     <% end %>
   </div>
 
@@ -24,32 +24,32 @@
   families_array = Family.all.includes(:community).order("communities.name ASC", "families.name ASC").map{|f| ["#{f.community.try(:code)} - #{f.name}", f.id]}
   families_array.insert(0, ["", nil])
   %>
-  <%= f.label :family_id, 'Family' %><br><%= f.select(:family_id, families_array) %>
+  <%= f.label :family_id, t('family') %><br><%= f.select(:family_id, families_array) %>
   </div>
   <div style="clear:both;"></div>
   <div class="field float">
-    <%= f.label :family_name1, "Family Name 1" %><br>
+    <%= f.label :family_name1, t("family_name1") %><br>
     <%= f.text_field :family_name1 %>
   </div>
   <div class="field float">
-    <%= f.label :family_name2, "Family Name 2" %><br>
+    <%= f.label :family_name2, t("family_name2") %><br>
     <%= f.text_field :family_name2 %>
   </div>
   <div class="field float">
-    <%= f.label :given_name1, "Given Name 1" %><br>
+    <%= f.label :given_name1, t("given_name_1") %><br>
     <%= f.text_field :given_name1 %>
   </div>
   <div class="field float">
-    <%= f.label :given_name2, "Given Name 2" %><br>
+    <%= f.label :given_name2, t("given_name_2") %><br>
     <%= f.text_field :given_name2 %>
   </div>
   <div class="field float">
-    <%= f.label :preferred_name, "Preferred Name" %><br>
+    <%= f.label :preferred_name, t("preferred_name") %><br>
     <%= f.text_field :preferred_name %>
   </div>
   <div style="clear:both;"></div>
   <div class="field">
-    <%= f.label :dob, "Date of Birth" %><br>
+    <%= f.label :dob, t("date_of_birth") %><br>
     <%= f.date_select :dob, start_year: 1970, end_year: Date.today.year %>
   </div>
   <div style="clear:both;"></div>
@@ -58,19 +58,19 @@
   statuses_array = Child::STATUSES_ARRAY.dup
   statuses_array.insert(0, ["", nil])
   %>
-  <%= f.label :status, 'Status' %><br><%= f.select(:status, statuses_array) %>
+  <%= f.label :status, t('status') %><br><%= f.select(:status, statuses_array) %>
   </div>
   <div class="field float">
   <%
   genders_array = Child::GENDERS_ARRAY.dup
   genders_array.insert(0, ["", nil])
   %>
-  <%= f.label :gender, 'Gender' %><br><%= f.select(:gender, genders_array) %>
+  <%= f.label :gender, t('gender') %><br><%= f.select(:gender, genders_array) %>
   </div>
   <div style="clear:both;"></div>
   <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes, cols: 60, rows: 5 %>
+    <%= f.label :notes, t('notes') %><br>
+    <%= f.text_area :notes, cols: 40, rows: 5 %>
   </div>
 
   <div class="actions">

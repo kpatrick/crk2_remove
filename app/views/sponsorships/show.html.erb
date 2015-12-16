@@ -1,4 +1,8 @@
-<h1>Showing Sponsorship</h1>
+<%= link_to 'Edit', edit_sponsorship_path(@sponsorship) %> |
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Sponsor', @sponsor %>
+
+<h1>Sponsorship</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -9,12 +13,7 @@
 
 <p>
   <strong>Sponsor:</strong>
-  <%= @sponsorship.sponsor_id %>
-</p>
-
-<p>
-  <strong>Sponsor Code:</strong>
-  <%= @sponsorship.sponsor_code %>
+  <%= link_to "#{@sponsor.try(:code)} - #{@sponsor.try(:given_name)} #{@sponsor.try(:family_name)}", @sponsor %>
 </p>
 
 <p>
@@ -26,6 +25,3 @@
   <strong>Dollar Amount:</strong>
   <%= @sponsorship.dollar_amount %>
 </p>
-
-<%= link_to 'Edit', edit_sponsorship_path(@sponsorship) %> |
-<%= link_to 'Back', sponsorships_path %>

@@ -26,7 +26,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1/next_code
   def next_code
     max_code = Child.where("derived_community = ?", @community.code).order("derived_number DESC").first.try(:derived_number) || 0
-    @next_code = "#{max_code + 1}"    
+    @next_code = "#{max_code + 1}"
   end
 
   # POST /communities
@@ -36,11 +36,9 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to @community, notice: 'Community was successfully created.' }
-        format.json { render :show, status: :created, location: @community }
+        format.html { redirect_to @community, notice: t('community_created') }
       else
         format.html { render :new }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,11 +48,9 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to @community, notice: 'Community was successfully updated.' }
-        format.json { render :show, status: :ok, location: @community }
+        format.html { redirect_to @community, notice: t('community_updated') }
       else
         format.html { render :edit }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,8 +60,7 @@ class CommunitiesController < ApplicationController
   def destroy
     @community.destroy
     respond_to do |format|
-      format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to communities_url, notice: t('community_deleted') }
     end
   end
 

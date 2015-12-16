@@ -1,4 +1,8 @@
-<h1>Showing Sponsor</h1>
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Home', {controller: :welcome, action: :index} %> |
+<%= link_to 'Sponsors', {controller: :sponsors, action: :index} %>
+
+<h1>Sponsor</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -61,6 +65,29 @@
   <strong>Secondary Phone:</strong>
   <%= @sponsor.secondary_phone %>
 </p>
+<br>
 
-<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
-<%= link_to 'Back', sponsors_path %>
+<h3>Sponsorships</h3>
+<%= link_to 'New', {controller: :sponsorships, action: :new, sponsor_id: @sponsor.id} %>
+
+<% if @sponsorships.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>School Year</th>
+      <th>Number of Children</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sponsorships.each do |sponsorship| %>
+      <tr>
+        <td><%= sponsorship.school_year %></td>
+        <td><%= sponsorship.number_children %></td>
+        <td><%= link_to 'Show', sponsorship %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

@@ -5,15 +5,15 @@
 <table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Family</th>
-      <th>Family Names</th>
-      <th>Given Names</th>
-      <th>Preferred Name</th>
-      <th>Date of Birth</th>
-      <th>Status</th>
-      <th>Gender</th>
-      <th colspan="3"></th>
+      <th><%= t('code') %></th>
+      <th><%= t('family') %></th>
+      <th><%= t('family_names') %></th>
+      <th><%= t('given_names') %></th>
+      <th><%= t('preferred_name') %></th>
+      <th><%= t('date_of_birth') %></th>
+      <th><%= t('status') %></th>
+      <th><%= t('gender') %></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -28,9 +28,7 @@
         <td><%= child.dob %></td>
         <td><%= Child::STATUSES_MAP[child.status] %></td>
         <td><%= Child::GENDERS_MAP[child.gender] %></td>
-        <td><%= link_to 'Show', child %></td>
-        <td><%= link_to 'Edit', edit_child_path(child) %></td>
-        <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('show'), child %></td>
       </tr>
     <% end %>
   </tbody>

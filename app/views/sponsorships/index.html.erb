@@ -1,13 +1,14 @@
-<h1>Listing Sponsorships</h1>
+<%= link_to 'New', new_sponsorship_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+
+<h1>Sponsorships</h1>
 
 <table>
   <thead>
     <tr>
       <th>School Year</th>
       <th>Sponsor</th>
-      <th>Sponsor Code</th>
       <th>Number of Children</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -15,19 +16,10 @@
     <% @sponsorships.each do |sponsorship| %>
       <tr>
         <td><%= sponsorship.school_year %></td>
-        <td><%= sponsorship.sponsor_id %></td>
-        <td><%= sponsorship.sponsor_code %></td>
+        <td><%= "#{sponsorship.try(:sponsor).try(:code)} - #{sponsorship.try(:sponsor).try(:given_name)} #{sponsorship.try(:sponsor).try(:family_name)}" %></td>
         <td><%= sponsorship.number_children %></td>
         <td><%= link_to 'Show', sponsorship %></td>
-        <td><%= link_to 'Edit', edit_sponsorship_path(sponsorship) %></td>
-        <td><%= link_to 'Destroy', sponsorship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Sponsorship', new_sponsorship_path %>
-<br>
-<%= link_to 'Home', {controller: :welcome, action: :index} %>

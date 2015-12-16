@@ -13,7 +13,7 @@ class FamiliesController < ApplicationController
     @community = @family.community
     @children = Child.joins(:family).where("families.id = ?", @family.id).order("children.code ASC")
     @guardians = Guardian.joins(:family).where("families.id = ?", @family.id).order("guardians.family_name1 ASC", "guardians.family_name2 ASC")
-    @family_years = FamilyYear.joins(:family).where("families.id = ?", @family.id).order("family_years.school_year ASC")    
+    @family_years = FamilyYear.joins(:family).where("families.id = ?", @family.id).order("family_years.school_year ASC")
   end
 
   # GET /families/new
@@ -34,10 +34,8 @@ class FamiliesController < ApplicationController
     respond_to do |format|
       if @family.save
         format.html { redirect_to @family, notice: 'Family was successfully created.' }
-        format.json { render :show, status: :created, location: @family }
       else
         format.html { render :new }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +46,8 @@ class FamiliesController < ApplicationController
     respond_to do |format|
       if @family.update(family_params)
         format.html { redirect_to @family, notice: 'Family was successfully updated.' }
-        format.json { render :show, status: :ok, location: @family }
       else
         format.html { render :edit }
-        format.json { render json: @family.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,10 +55,10 @@ class FamiliesController < ApplicationController
   # DELETE /families/1
   # DELETE /families/1.json
   def destroy
+    community = @family.community
     @family.destroy
     respond_to do |format|
-      format.html { redirect_to families_url, notice: 'Family was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to community, notice: 'Family was successfully destroyed.' }
     end
   end
 

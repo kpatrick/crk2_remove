@@ -10,11 +10,13 @@ class SponsorshipsController < ApplicationController
   # GET /sponsorships/1
   # GET /sponsorships/1.json
   def show
+    @sponsor = @sponsorship.sponsor
   end
 
   # GET /sponsorships/new
   def new
     @sponsorship = Sponsorship.new
+    @sponsorship.sponsor_id = params[:sponsor_id] if params[:sponsor_id]
   end
 
   # GET /sponsorships/1/edit
@@ -28,11 +30,9 @@ class SponsorshipsController < ApplicationController
 
     respond_to do |format|
       if @sponsorship.save
-        format.html { redirect_to @sponsorship, notice: 'Sponsorship was successfully created.' }
-        format.json { render :show, status: :created, location: @sponsorship }
+        format.html { redirect_to @sponsorship, notice: t('sponsorship_created') }
       else
         format.html { render :new }
-        format.json { render json: @sponsorship.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +42,9 @@ class SponsorshipsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsorship.update(sponsorship_params)
-        format.html { redirect_to @sponsorship, notice: 'Sponsorship was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sponsorship }
+        format.html { redirect_to @sponsorship, notice: t('sponsorship_updated') }
       else
         format.html { render :edit }
-        format.json { render json: @sponsorship.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,10 +52,10 @@ class SponsorshipsController < ApplicationController
   # DELETE /sponsorships/1
   # DELETE /sponsorships/1.json
   def destroy
+    sponsor = @sponsorship.sponsor
     @sponsorship.destroy
     respond_to do |format|
-      format.html { redirect_to sponsorships_url, notice: 'Sponsorship was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to sponsor, notice: t('sponsorship_destroyed') }
     end
   end
 

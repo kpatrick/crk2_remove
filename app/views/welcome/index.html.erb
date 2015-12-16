@@ -1,10 +1,18 @@
+<%= link_to 'en', {controller: :welcome, action: :index, locale: "en"} %> |
+<%= link_to 'es', {controller: :welcome, action: :index, locale: "es"} %>
+
 <h1><%= t("home") %></h1>
 
-<div><a href="/communities">Communities </a></div>
-<div><a href="/families">Families</a></div>
-<div><a href="/children">Children</a></div>
-<div><a href="/guardians">Guardians</a></div>
-<div class="future"><a href="/enrollments">Enrollments (Preview)</a></div>
-<div class="future"><a href="/sponsors">Sponsors (Preview)</a></div>
-<div class="future"><a href="/sponsorships">Sponsorships (Preview)</a></div>
+<% if session[:username].present? %>
+<div><a href="/communities"><%= t('communities') %></a></div>
+<div class="subordinate"><a href="/families"><%= t('families') %></a></div>
+<div class="subordinate"><a href="/children"><%= t('children') %></a></div>
+<div class="subordinate"><a href="/guardians"><%= t('guardians') %></a></div>
+<div class="subordinate future"><a href="/enrollments"><%= t('enrollments') %></a></div>
+<div><a href="/sponsors"><%= t('sponsors') %></a></div>
+<div class="subordinate"><a href="/sponsorships"><%= t('sponsorships') %></a></div>
+<div><%= link_to 'Logout', {controller: :welcome, action: :logout}%></a></div>
+<% else %>
+<div><%= link_to 'Login', {controller: :welcome, action: :login}%></a></div>
+<% end %>
 <div style="margin-top: 5px;"><a href="/impressum">Impressum</a></div>

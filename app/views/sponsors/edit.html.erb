@@ -1,6 +1,8 @@
-<h1>Editing Sponsor</h1>
+<%= link_to 'Show', @sponsor %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+
+<h1>Sponsor</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @sponsor %> |
-<%= link_to 'Back', sponsors_path %>
+<% if @user && @user.can_delete_record? %>
+<div class="delete-record"><%= link_to t('destroy'), @sponsor, method: :delete, data: { confirm: t('confirm_destroy') } %></div>
+<% end %>

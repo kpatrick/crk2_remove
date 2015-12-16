@@ -16,7 +16,7 @@ class GuardiansController < ApplicationController
   # GET /guardians/new
   def new
     @guardian = Guardian.new()
-    @guardian.family_id = params[:family_id] if  params[:family_id] 
+    @guardian.family_id = params[:family_id] if  params[:family_id]
   end
 
   # GET /guardians/1/edit
@@ -31,10 +31,8 @@ class GuardiansController < ApplicationController
     respond_to do |format|
       if @guardian.save
         format.html { redirect_to @guardian, notice: 'Guardian was successfully created.' }
-        format.json { render :show, status: :created, location: @guardian }
       else
         format.html { render :new }
-        format.json { render json: @guardian.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -45,10 +43,8 @@ class GuardiansController < ApplicationController
     respond_to do |format|
       if @guardian.update(guardian_params)
         format.html { redirect_to @guardian, notice: 'Guardian was successfully updated.' }
-        format.json { render :show, status: :ok, location: @guardian }
       else
         format.html { render :edit }
-        format.json { render json: @guardian.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,10 +52,10 @@ class GuardiansController < ApplicationController
   # DELETE /guardians/1
   # DELETE /guardians/1.json
   def destroy
+    family = @guardian.family
     @guardian.destroy
     respond_to do |format|
-      format.html { redirect_to guardians_url, notice: 'Guardian was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to family, notice: 'Guardian was successfully destroyed.' }
     end
   end
 

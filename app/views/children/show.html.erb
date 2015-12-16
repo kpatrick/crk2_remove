@@ -2,51 +2,51 @@
 <%= link_to 'Home', {controller: :welcome, action: :index} %> |
 <%= link_to 'Family', @child.family %>
 
-<h1>Child</h1>
+<h1><%=t('child')%></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Code:</strong>
+  <strong><%=t('code')%>:</strong>
   <%= @child.code %>
 </p>
 
 <p>
-  <strong>Family:</strong>
+  <strong><%=t('family')%>:</strong>
   <%= link_to "#{@child.family.try(:community).try(:code)} - #{@child.family.try(:name)}", @child.family %>
 </p>
 
 <p>
-  <strong>Family Names:</strong>
+  <strong><%=t('family_names')%>:</strong>
   <%= @child.family_name1 %> <%= @child.family_name2 %>
 </p>
 
 <p>
-  <strong>Given Names:</strong>
+  <strong><%=t('given_names')%>:</strong>
   <%= @child.given_name1 %> <%= @child.given_name2 %>
 </p>
 
 <p>
-  <strong>Preferred Name:</strong>
+  <strong><%=t('preferred_name')%>:</strong>
   <%= @child.preferred_name %>
 </p>
 
 <p>
-  <strong>Date of Birth:</strong>
+  <strong><%=t('date_of_birth')%>:</strong>
   <%= @child.dob %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%=t('status')%>:</strong>
   <%= Child::STATUSES_MAP[@child.status] %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
+  <strong><%=t('gender')%>:</strong>
   <%= Child::GENDERS_MAP[@child.gender] %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong><%=t('notes')%>:</strong>
   <%= @child.notes %>
 </p>

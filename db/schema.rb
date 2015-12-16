@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101221454) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20151216022859) do
 
   create_table "children", force: true do |t|
     t.string   "code"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151101221454) do
     t.integer  "derived_number"
   end
 
-  add_index "children", ["code"], name: "index_children_on_code", unique: true, using: :btree
+  add_index "children", ["code"], name: "index_children_on_code", unique: true
 
   create_table "communities", force: true do |t|
     t.string   "code"
@@ -132,6 +129,14 @@ ActiveRecord::Schema.define(version: 20151101221454) do
     t.string   "sponsor_code"
     t.integer  "number_children"
     t.integer  "dollar_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "role"
+    t.string   "hashed_password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,6 +8,9 @@
 </head>
 <body>
 <div><a href="/"><img src="/crk.png" height="100px"></a></div>
+<% if @user %>
+<span class="userinfo"><%= @user.role.capitalize %> // </span>
+<% end %>
 <%= yield %>
 <p style="font-style: italic; font-size: 10px">
   Costa Rica Kids School Sponsorship Program<br>

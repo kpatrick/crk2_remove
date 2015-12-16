@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :sponsors
 
   root 'welcome#index'
-
+  match 'login' => 'welcome#login', :via => [:get, :post]
+  match 'logout' => 'welcome#logout', :via => [:get, :post]
   get 'impressum' => 'welcome#impressum'
   get 'communities/:id/next_code' => 'communities#next_code'
 
