@@ -29,7 +29,7 @@ class Child < ActiveRecord::Base
     first = true
     text.each_line do |line|
       if !first
-        cols = line.split("\t")
+        cols = line.strip.split("\t")
         f = Family.where(id: cols[2].to_i).first
         c = Child.new({id: cols[0].to_i,
           code: cols[1].present? ? cols[1] : nil,

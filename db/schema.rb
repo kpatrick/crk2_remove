@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151216022859) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "children", force: true do |t|
     t.string   "code"
     t.integer  "family_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20151216022859) do
     t.integer  "derived_number"
   end
 
-  add_index "children", ["code"], name: "index_children_on_code", unique: true
+  add_index "children", ["code"], name: "index_children_on_code", unique: true, using: :btree
 
   create_table "communities", force: true do |t|
     t.string   "code"

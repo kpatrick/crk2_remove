@@ -6,10 +6,8 @@
   <thead>
     <tr>
       <th>Code</th>
-      <th>Donor Number</th>
       <th>Given Name</th>
       <th>Family Name</th>
-      <th>Link</th>
       <th>City</th>
       <th></th>
     </tr>
@@ -19,10 +17,8 @@
     <% @sponsors.each do |sponsor| %>
       <tr>
         <td><%= sponsor.code %></td>
-        <td><%= sponsor.donor_number %></td>
         <td><%= sponsor.given_name %></td>
         <td><%= sponsor.family_name %></td>
-        <td><%= sponsor.link %></td>
         <td><%= sponsor.city %></td>
         <td><%= link_to 'Show', sponsor %></td>
       </tr>
