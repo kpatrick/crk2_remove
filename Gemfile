@@ -6,10 +6,10 @@ ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.3.0'
 gem 'rails', '4.1.12'
 
 # Use jdbcsqlite3 as the database for Active Record
-#gem 'activerecord-jdbcsqlite3-adapter'
+gem 'activerecord-jdbcsqlite3-adapter'
 
 # Use Postgres
-gem 'activerecord-jdbcpostgresql-adapter'
+#gem 'activerecord-jdbcpostgresql-adapter'
 
 # Use Microsoft SQL Server
 #gem 'activerecord-jdbcmssql-adapter', platform: :jruby

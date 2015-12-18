@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216022859) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20151218025815) do
 
   create_table "children", force: true do |t|
     t.string   "code"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151216022859) do
     t.integer  "derived_number"
   end
 
-  add_index "children", ["code"], name: "index_children_on_code", unique: true, using: :btree
+  add_index "children", ["code"], name: "index_children_on_code", unique: true
 
   create_table "communities", force: true do |t|
     t.string   "code"
@@ -71,6 +68,8 @@ ActiveRecord::Schema.define(version: 20151216022859) do
     t.boolean  "not_included"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "newyear_attendance"
+    t.string   "midyear_attendance"
   end
 
   create_table "families", force: true do |t|
