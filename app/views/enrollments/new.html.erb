@@ -1,5 +1,6 @@
-<h1>New Enrollment</h1>
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('child'), @enrollment.child %>
+
+<h1><%= tr("new_enrollment") %></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', enrollments_path %>

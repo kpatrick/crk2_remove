@@ -1,6 +1,7 @@
 class GuardiansController < ApplicationController
   before_action :set_guardian, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_delete_permission, only: [:destroy]
+  
   # GET /guardians
   # GET /guardians.json
   def index
@@ -30,7 +31,7 @@ class GuardiansController < ApplicationController
 
     respond_to do |format|
       if @guardian.save
-        format.html { redirect_to @guardian, notice: 'Guardian was successfully created.' }
+        format.html { redirect_to @guardian, notice: tr("guardian_created") }
       else
         format.html { render :new }
       end
@@ -42,7 +43,7 @@ class GuardiansController < ApplicationController
   def update
     respond_to do |format|
       if @guardian.update(guardian_params)
-        format.html { redirect_to @guardian, notice: 'Guardian was successfully updated.' }
+        format.html { redirect_to @guardian, notice: tr("guardian_updated") }
       else
         format.html { render :edit }
       end
@@ -55,7 +56,7 @@ class GuardiansController < ApplicationController
     family = @guardian.family
     @guardian.destroy
     respond_to do |format|
-      format.html { redirect_to family, notice: 'Guardian was successfully destroyed.' }
+      format.html { redirect_to family, notice: tr("guardian_destroyed") }
     end
   end
 

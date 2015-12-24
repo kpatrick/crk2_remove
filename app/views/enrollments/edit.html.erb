@@ -1,6 +1,9 @@
-<h1>Editing Enrollment</h1>
+<%= link_to tr('show'), @enrollment %> |
+<%= link_to tr('home'), {controller: :welcome, action: :index} %>
+
+<h1><%= tr("enrollment") %></h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @enrollment %> |
-<%= link_to 'Back', enrollments_path %>
+<% if @user && @user.can_delete_record? %>
+<div class="delete-record"><%= link_to tr('destroy'), @enrollment, method: :delete, data: { confirm: tr('confirm_destroy') } %></div>
+<% end %>

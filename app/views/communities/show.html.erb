@@ -1,31 +1,31 @@
-<%= link_to 'Edit', edit_community_path(@community) %> |
-<%= link_to 'Home', {controller: :welcome, action: :index} %> |
-<%= link_to 'Communities', {controller: :communities, action: :index} %>
+<%= link_to tr('edit'), edit_community_path(@community) %> |
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('communities'), {controller: :communities, action: :index} %>
 
-<h1>Community</h1>
+<h1><%= tr('community') %></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Code:</strong>
+  <strong><%= tr('code')%>:</strong>
   <%= @community.code %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= tr('name')%>:</strong>
   <%= @community.name %>
 </p>
 
 <br>
 
-<h3>Families</h3>
-<%= link_to 'New', {controller: :families, action: :new, community_id: @community.id} %>
+<h3><%= tr('families') %></h3>
+<%= link_to tr('new'), {controller: :families, action: :new, community_id: @community.id} %>
 
 <% if @families.present? %>
 <table border=1 cellpadding=10>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= tr('name') %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -34,7 +34,7 @@
     <% @families.each do |family| %>
       <tr>
         <td><%= family.name %></td>
-        <td><%= link_to 'Show', family %></td>
+        <td><%= link_to tr('show'), family %></td>
       </tr>
     <% end %>
   </tbody>
@@ -43,20 +43,20 @@
 
 
 
-<h3>Children</h3>
+<h3><%= tr('children') %></h3>
 
 <% if @children.present? %>
 <table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Family</th>
-      <th>Family Names</th>
-      <th>Given Names</th>
-      <th>Preferred Name</th>
-      <th>Date of Birth</th>
-      <th>Status</th>
-      <th>Gender</th>
+      <th><%= tr('code') %></th>
+      <th><%= tr('family') %></th>
+      <th><%= tr('family_names') %></th>
+      <th><%= tr('given_names') %></th>
+      <th><%= tr('preferred_name') %></th>
+      <th><%= tr('date_of_birth') %></th>
+      <th><%= tr('status') %></th>
+      <th><%= tr('gender') %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -70,9 +70,9 @@
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.preferred_name %></td>
         <td><%= child.dob %></td>
-        <td><%= Child::STATUSES_MAP[child.status] %></td>
-        <td><%= Child::GENDERS_MAP[child.gender] %></td>
-        <td><%= link_to 'Show', child %></td>
+        <td><%= Child::code_to_status(self)[child.status] %></td>
+        <td><%= Child::code_to_gender(self)[child.gender] %></td>
+        <td><%= link_to tr('show'), child %></td>
       </tr>
     <% end %>
   </tbody>

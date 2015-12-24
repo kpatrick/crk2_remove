@@ -1,5 +1,6 @@
 class FamiliesController < ApplicationController
   before_action :set_family, only: [:show, :edit, :update, :destroy]
+  before_action :check_delete_permission, only: [:destroy]
 
   # GET /families
   # GET /families.json
@@ -33,7 +34,7 @@ class FamiliesController < ApplicationController
 
     respond_to do |format|
       if @family.save
-        format.html { redirect_to @family, notice: 'Family was successfully created.' }
+        format.html { redirect_to @family, notice: tr("family_created") }
       else
         format.html { render :new }
       end
@@ -45,7 +46,7 @@ class FamiliesController < ApplicationController
   def update
     respond_to do |format|
       if @family.update(family_params)
-        format.html { redirect_to @family, notice: 'Family was successfully updated.' }
+        format.html { redirect_to @family, notice: tr("family_updated") }
       else
         format.html { render :edit }
       end
@@ -58,7 +59,7 @@ class FamiliesController < ApplicationController
     community = @family.community
     @family.destroy
     respond_to do |format|
-      format.html { redirect_to community, notice: 'Family was successfully destroyed.' }
+      format.html { redirect_to community, notice: tr("family_deleted") }
     end
   end
 

@@ -1,7 +1,7 @@
 <%= form_for(@enrollment) do |f| %>
   <% if @enrollment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+      <h2><%= tr("record_not_saved") %></h2>
 
       <ul>
       <% @enrollment.errors.full_messages.each do |message| %>
@@ -11,101 +11,139 @@
     </div>
   <% end %>
 
+  <p>
+    <strong><%= tr("child") %>:</strong>
+    <%= link_to @enrollment.child.try(:code), @enrollment.child %>
+    <%= f.hidden_field :child_id, value: @enrollment.child_id %>
+  </p>
+
   <div class="field">
-    <%= f.label :school_year, 'School Year' %><br>
+    <%= f.label :school_year, tr('school_year') %><br>
     <%= f.text_field :school_year %>
   </div>
+
+  <% if @user && @user.can_access_sponsor? %>
   <div class="field">
-    <%= f.label :child_id %><br>
-    <%= f.number_field :child_id %>
+    <%
+    sponsors_array = Sponsor.all.order(code: :asc).map{|c| ["#{c.code} - #{c.given_name} #{c.family_name}", c.id]}
+    sponsors_array.insert(0, ["", nil])
+    %>
+    <%= f.label :sponsor_id, tr('sponsor') %><br><%= f.select(:sponsor_id, sponsors_array) %>
   </div>
-  <div class="field">
-    <%= f.label :child_code, 'Child Code' %><br>
-    <%= f.text_field :child_code %>
+  <% end %>
+  <div style="clear:both;"></div>
+  <%
+  newyear_shirt_sizes_array = Enrollment.shirt_sizes_to_code(self)
+  newyear_shirt_sizes_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :newyear_shirt_size, tr('newyear_shirt_size') %><br><%= f.select(:newyear_shirt_size, newyear_shirt_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :sponsor_id %><br>
-    <%= f.number_field :sponsor_id %>
+  <%
+  newyear_pant_sizes_array = Enrollment.pant_sizes_to_code(self)
+  newyear_pant_sizes_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :newyear_pant_size, tr('newyear_pant_size') %><br><%= f.select(:newyear_pant_size, newyear_pant_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :sponsor_code, 'Sponsor Code' %><br>
-    <%= f.text_field :sponsor_code %>
+  <%
+  newyear_shoe_sizes_array = Enrollment.shoe_sizes_to_code(self)
+  newyear_shoe_sizes_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :newyear_shoe_size, tr('newyear_shoe_size') %><br><%= f.select(:newyear_shoe_size, newyear_shoe_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :newyear_shirt_size, 'New Year Shirt Size' %><br>
-    <%= f.text_field :newyear_shirt_size %>
+  <%
+  midyear_shirt_sizes_array = Enrollment.shirt_sizes_to_code(self)
+  midyear_shirt_sizes_array.insert(0, ["", nil])
+  %>
+  <div style="clear:both;"></div>
+  <div class="field float">
+  <%= f.label :midyear_shirt_size, tr('midyear_shirt_size') %><br><%= f.select(:midyear_shirt_size, midyear_shirt_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :newyear_pant_size, 'New Year Pant Size' %><br>
-    <%= f.text_field :newyear_pant_size %>
+  <%
+  midyear_pant_sizes_array = Enrollment.pant_sizes_to_code(self)
+  midyear_pant_sizes_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :midyear_pant_size, tr('midyear_pant_size') %><br><%= f.select(:midyear_pant_size, midyear_pant_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :newyear_shoe_size, 'New Year Shoe Size' %><br>
-    <%= f.text_field :newyear_shoe_size %>
+  <%
+  midyear_shoe_sizes_array = Enrollment.shoe_sizes_to_code(self)
+  midyear_shoe_sizes_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :midyear_shoe_size, tr('midyear_shoe_size') %><br><%= f.select(:midyear_shoe_size, midyear_shoe_sizes_array) %>
   </div>
-  <div class="field">
-    <%= f.label :midyear_shirt_size, 'Mid Year Shirt Size' %><br>
-    <%= f.text_field :midyear_shirt_size %>
+  <div style="clear:both;"></div>
+  <%
+  newyear_attendance_array = Enrollment.attendance_to_code(self)
+  newyear_attendance_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :gender, tr('newyear_attendance') %><br><%= f.select(:newyear_attendance, newyear_attendance_array) %>
   </div>
-  <div class="field">
-    <%= f.label :midyear_pant_size, 'Mid Year Pant Size' %><br>
-    <%= f.text_field :midyear_pant_size %>
+  <%
+  midyear_attendance_array = Enrollment.attendance_to_code(self)
+  midyear_attendance_array.insert(0, ["", nil])
+  %>
+  <div class="field float">
+  <%= f.label :gender, tr('midyear_attendance') %><br><%= f.select(:midyear_attendance, midyear_attendance_array) %>
   </div>
-  <div class="field">
-    <%= f.label :midyear_shoe_size, 'Mid Year Shoe Size' %><br>
-    <%= f.text_field :midyear_shoe_size %>
-  </div>
-  <div class="field">
-    <%= f.label :newyear_attendance_id, 'New Year Attendance' %><br>
-    <%= f.number_field :newyear_attendance_id %>
-  </div>
-  <div class="field">
-    <%= f.label :newyear_attendance_notes, 'New Year Attendance Notes' %><br>
+  <div style="clear:both;"></div>
+  <div class="field float">
+    <%= f.label :newyear_attendance_notes, tr('newyear_attendance_notes') %><br>
     <%= f.text_area :newyear_attendance_notes, cols: 40, rows: 5 %>
   </div>
-  <div class="field">
-    <%= f.label :midyear_attendance_id, 'Mid Year Attendance' %><br>
-    <%= f.number_field :midyear_attendance_id %>
-  </div>
-  <div class="field">
-    <%= f.label :midyear_attendance_notes, 'Mid Year Attendance Notes' %><br>
+  <div class="field float">
+    <%= f.label :midyear_attendance_notes, tr('midyear_attendance_notes') %><br>
     <%= f.text_area :midyear_attendance_notes, cols: 40, rows: 5 %>
   </div>
+  <div style="clear:both;"></div>
   <div class="field">
-    <%= f.check_box :report_card %> <%= f.label :report_card , 'Report Card'%>
+    <%= f.check_box :report_card %> <%= f.label :report_card, tr('report_card')%>
   </div>
   <div class="field">
-    <%= f.label :report_notes, 'Report Notes' %><br>
+    <%= f.label :report_notes, tr('report_notes') %><br>
     <%= f.text_area :report_notes, cols: 40, rows: 5 %>
   </div>
   <div class="field">
-    <%= f.check_box :work_form %> <%= f.label :work_form, 'Work Form' %>
+    <%= f.check_box :work_form %> <%= f.label :work_form, tr('work_form') %>
   </div>
   <div class="field">
-    <%= f.label :work_form_notes, 'Work Form Notes' %><br>
+    <%= f.label :work_form_notes, tr('work_form_notes') %><br>
     <%= f.text_area :work_form_notes, cols: 40, rows: 5 %>
   </div>
   <div class="field">
-    <%= f.check_box :pass %> <%= f.label :pass, 'Pass' %>
-
+    <%= f.check_box :pass %> <%= f.label :pass, tr('pass') %>
   </div>
   <div class="field">
-    <%= f.label :pass_notes, 'Pass Notes' %><br>
+    <%= f.label :pass_notes, tr('pass_notes') %><br>
     <%= f.text_area :pass_notes, cols: 40, rows: 5 %>
   </div>
-  <div class="field">
-    <%= f.label :grades %><br>
-    <%= f.text_field :grades %>
+  <%
+  grades_array = Enrollment.grades_to_code(self)
+  grades_array.insert(0, ["", nil])
+  %>
+  <%= f.label :grades, tr('grades') %><br><%= f.select(:grades, grades_array) %>
   </div>
   <div class="field">
-    <%= f.label :grades_notes, 'Grade Notes' %><br>
+    <%= f.label :grades_notes, tr('grades_notes') %><br>
     <%= f.text_area :grades_notes, cols: 40, rows: 5 %>
   </div>
   <div class="field">
-    <%= f.check_box :letter %> <%= f.label :letter %>
+    <%= f.check_box :letter %> <%= f.label :letter, tr("letter") %>
   </div>
   <div class="field">
-    <%= f.check_box :not_included %> <%= f.label :not_included, 'Not Included' %>
+    <%= f.check_box :not_included %> <%= f.label :not_included, tr('not_included') %>
+  </div>
+  <div class="field">
+    <%= f.label :close_up_photo, tr("close_up_photo") %><br>
+    <%= f.text_field :close_up_photo %>
+  </div>
+  <div class="field">
+    <%= f.label :full_photo, tr("full_photo") %><br>
+    <%= f.text_field :full_photo %>
   </div>
   <div class="actions">
     <%= f.submit %>

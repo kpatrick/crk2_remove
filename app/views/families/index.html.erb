@@ -1,12 +1,12 @@
-<%= link_to 'New', new_family_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+<%= link_to tr('new'), new_family_path %> | <%= link_to tr('home'), {controller: :welcome, action: :index} %>
 
-<h1>Families</h1>
+<h1><%= tr('families') %></h1>
 
 <table border=1 cellpadding=10>
   <thead>
     <tr>
-      <th>Community</th>
-      <th>Name</th>
+      <th><%= tr('community') %></th>
+      <th><%= tr('name') %></th>
       <th></th>
     </tr>
   </thead>
@@ -16,7 +16,7 @@
       <tr>
         <td><%= "#{family.community.try(:code)}" %></td>
         <td><%= family.name %></td>
-        <td><%= link_to 'Show', family %></td>
+        <td><%= link_to tr('show'), family %></td>
       </tr>
     <% end %>
   </tbody>

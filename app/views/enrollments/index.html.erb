@@ -1,14 +1,12 @@
-<h1>Listing Enrollments</h1>
+<%= link_to tr('new'), new_enrollment_path %> | <%= link_to tr('home'), {controller: :welcome, action: :index} %>
+<h1><%= tr("enrollments") %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>School Year</th>
-      <th>Child</th>
-      <th>Child Code</th>
-      <th>Sponsor</th>
-      <th>Sponsor Code</th>
-      <th colspan="3"></th>
+      <th><%= tr("school_year") %></th>
+      <th><%= tr("child") %></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -16,20 +14,9 @@
     <% @enrollments.each do |enrollment| %>
       <tr>
         <td><%= enrollment.school_year %></td>
-        <td><%= enrollment.child_id %></td>
-        <td><%= enrollment.child_code %></td>
-        <td><%= enrollment.sponsor_id %></td>
-        <td><%= enrollment.sponsor_code %></td>
-        <td><%= link_to 'Show', enrollment %></td>
-        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= enrollment.child.try(:code) %></td>
+        <td><%= link_to tr('show'), enrollment %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Enrollment', new_enrollment_path %>
-<br>
-<%= link_to 'Home', {controller: :welcome, action: :index} %>

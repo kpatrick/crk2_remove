@@ -1,7 +1,7 @@
-<%= link_to 'Show', @community %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
-<h1>Community</h1>
+<%= link_to tr('show'), @community %> | <%= link_to tr('home'), {controller: :welcome, action: :index} %>
+<h1><%= tr("community") %></h1>
 
 <%= render 'form' %>
 <% if @user && @user.can_delete_record? %>
-<div class="delete-record"><%= link_to t('destroy'), @community, method: :delete, data: { confirm: t('confirm_destroy') } %></div>
+<div class="delete-record"><%= link_to tr('destroy'), @community, method: :delete, data: { confirm: tr('confirm_destroy') } %></div>
 <% end %>

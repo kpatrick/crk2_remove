@@ -1,40 +1,40 @@
-<%= link_to 'Edit', edit_family_path(@family) %> |
-<%= link_to 'Home', {controller: :welcome, action: :index} %> |
-<%= link_to 'Community', @community %>
+<%= link_to tr('edit'), edit_family_path(@family) %> |
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('community'), @community %>
 
-<h1>Family</h1>
+<h1><%= tr('family') %></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Community:</strong>
+  <strong><%= tr('community') %>:</strong>
   <%= link_to "#{@community.try(:code)}", @community %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= tr('name') %>:</strong>
   <%= @family.name %>
 </p>
 
 <p>
-  <strong>Notes:</strong>
+  <strong><%= tr('notes') %>:</strong>
   <%= @family.notes %>
 </p>
 <br>
 
-<h3>Guardians</h3>
-<%= link_to 'New', {controller: :guardians, action: :new, family_id: @family.id} %>
+<h3><%= tr('guardians') %></h3>
+<%= link_to tr('new'), {controller: :guardians, action: :new, family_id: @family.id} %>
 
 <% if @guardians.present? %>
 <table border=1 cellpadding=10>
   <thead>
     <tr>
-      <th>Family Names</th>
-      <th>Given Names</th>
-      <th>Preferred Name</th>
-      <th>Relationship</th>
-      <th>Active</th>
-      <th>Primary</th>
+      <th><%= tr('family_names') %></th>
+      <th><%= tr('given_names') %></th>
+      <th><%= tr('preferred_name') %></th>
+      <th><%= tr('relationship') %></th>
+      <th><%= tr('active') %></th>
+      <th><%= tr('primary') %></th>
       <th></th>
     </tr>
   </thead>
@@ -45,30 +45,30 @@
         <td><%= guardian.family_name1 %> <%= guardian.family_name2 %></td>
         <td><%= guardian.given_name1 %> <%= guardian.given_name2 %></td>
         <td><%= guardian.preferred_name %></td>
-        <td><%= Guardian::RELATIONSHIPS_MAP[guardian.relationship] %></td>
-        <td><%= guardian.active %></td>
-        <td><%= guardian.primary %></td>
-        <td><%= link_to 'Show', guardian %></td>
+        <td><%= Guardian::code_to_relationship(self)[guardian.relationship] %></td>
+        <td><%= guardian.active ? tr('bool.true') : tr('bool.false') %></td>
+        <td><%= guardian.primary ? tr('bool.true') : tr('bool.false') %></td>
+        <td><%= link_to tr('show'), guardian %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <% end %>
 
-<h3>Children</h3>
-<%= link_to 'New', {controller: :children, action: :new, family_id: @family.id} %>
+<h3><%= tr("children") %></h3>
+<%= link_to tr('new'), {controller: :children, action: :new, family_id: @family.id} %>
 
 <% if @children.present? %>
 <table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Family Names</th>
-      <th>Given Names</th>
-      <th>Preferred Name</th>
-      <th>Date of Birth</th>
-      <th>Status</th>
-      <th>Gender</th>
+      <th><%= tr('code') %></th>
+      <th><%= tr('family_names') %></th>
+      <th><%= tr('given_names') %></th>
+      <th><%= tr('preferred_name') %></th>
+      <th><%= tr('date_of_birth') %></th>
+      <th><%= tr('status') %></th>
+      <th><%= tr('gender') %></th>
       <th></th>
     </tr>
   </thead>
@@ -81,23 +81,23 @@
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.preferred_name %></td>
         <td><%= child.dob %></td>
-        <td><%= Child::STATUSES_MAP[child.status] %></td>
-        <td><%= Child::GENDERS_MAP[child.gender] %></td>
-        <td><%= link_to 'Show', child %></td>
+        <td><%= Child::code_to_status(self)[child.status] %></td>
+        <td><%= Child::code_to_gender(self)[child.gender] %></td>
+        <td><%= link_to tr('show'), child %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <% end %>
 
-<h3>School Years</h3>
-<%= link_to 'New', {controller: :family_years, action: :new, family_id: @family.id} %>
+<h3><%= tr('family_years') %></h3>
+<%= link_to tr('new'), {controller: :family_years, action: :new, family_id: @family.id} %>
 
 <% if @family_years.present? %>
 <table>
   <thead>
     <tr>
-      <th>Family Years</th>
+      <th><%= tr('school_year') %></th>
       <th></th>
     </tr>
   </thead>
@@ -106,7 +106,7 @@
     <% @family_years.each do |family_year| %>
       <tr>
         <td><%= family_year.school_year %></td>
-        <td><%= link_to 'Show', family_year %></td>
+        <td><%= link_to tr('show'), family_year %></td>
       </tr>
     <% end %>
   </tbody>

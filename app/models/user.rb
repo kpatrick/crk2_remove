@@ -3,6 +3,18 @@ class User < ActiveRecord::Base
     ["admin", "editor"].include?(role)
   end
 
+  def can_delete_sponsor_record?
+    can_access_sponsor?
+  end
+
+  def can_access_sponsor?
+    ["admin", "accountant"].include?(role)
+  end
+
+  def can_access_interview_notes?
+    ["admin", "interviewer"].include?(role)
+  end
+
   def self.load_file(file_name)
     text=File.open(file_name).read
     text.gsub!(/\r\n?/, "\n")

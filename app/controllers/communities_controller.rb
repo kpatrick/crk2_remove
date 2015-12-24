@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy, :next_code]
+  before_action :check_delete_permission, only: [:destroy]
 
   # GET /communities
   # GET /communities.json
@@ -36,7 +37,7 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to @community, notice: t('community_created') }
+        format.html { redirect_to @community, notice: tr('community_created') }
       else
         format.html { render :new }
       end
@@ -48,7 +49,7 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to @community, notice: t('community_updated') }
+        format.html { redirect_to @community, notice: tr('community_updated') }
       else
         format.html { render :edit }
       end
@@ -60,7 +61,7 @@ class CommunitiesController < ApplicationController
   def destroy
     @community.destroy
     respond_to do |format|
-      format.html { redirect_to communities_url, notice: t('community_deleted') }
+      format.html { redirect_to communities_url, notice: tr('community_deleted') }
     end
   end
 

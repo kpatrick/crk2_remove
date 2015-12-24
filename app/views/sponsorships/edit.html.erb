@@ -1,8 +1,8 @@
-<%= link_to 'Show', @sponsorship %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+<%= link_to tr('show'), @sponsorship %> | <%= link_to tr('home'), {controller: :welcome, action: :index} %>
 
-<h1>Sponsorship</h1>
+<h1><%= tr("sponsorship") %></h1>
 
 <%= render 'form' %>
-<% if @user && @user.can_delete_record? %>
-<div class="delete-record"><%= link_to t('destroy'), @sponsorship, method: :delete, data: { confirm: t('confirm_destroy') } %></div>
+<% if @user && @user.can_delete_sponsor_record? %>
+<div class="delete-record"><%= link_to tr('destroy'), @sponsorship, method: :delete, data: { confirm: t('confirm_destroy') } %></div>
 <% end %>

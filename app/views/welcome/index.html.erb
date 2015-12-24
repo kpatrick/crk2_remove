@@ -1,18 +1,20 @@
-<%= link_to 'en', {controller: :welcome, action: :index, locale: "en"} %> |
-<%= link_to 'es', {controller: :welcome, action: :index, locale: "es"} %>
+<%= link_to tr('use_english'), {controller: :welcome, action: :index, locale: "en"} %> |
+<%= link_to tr('use_spanish'), {controller: :welcome, action: :index, locale: "es"} %>
 
-<h1><%= t("home") %></h1>
+<h1><%= tr("home") %></h1>
 
 <% if session[:username].present? %>
-<div><a href="/communities"><%= t('communities') %></a></div>
-<div class="subordinate"><a href="/families"><%= t('families') %></a></div>
-<div class="subordinate"><a href="/children"><%= t('children') %></a></div>
-<div class="subordinate"><a href="/guardians"><%= t('guardians') %></a></div>
-<div class="subordinate future"><a href="/enrollments"><%= t('enrollments') %></a></div>
-<div><a href="/sponsors"><%= t('sponsors') %></a></div>
-<div class="subordinate"><a href="/sponsorships"><%= t('sponsorships') %></a></div>
-<div><%= link_to 'Logout', {controller: :welcome, action: :logout}%></a></div>
-<% else %>
-<div><%= link_to 'Login', {controller: :welcome, action: :login}%></a></div>
+<div><a href="/communities"><%= tr('communities') %></a></div>
+<div class="subordinate"><a href="/families"><%= tr('families') %></a></div>
+<div class="subordinate"><a href="/children"><%= tr('children') %></a></div>
+<div class="subordinate"><a href="/guardians"><%= tr('guardians') %></a></div>
+<div class="subordinate"><a href="/enrollments"><%= tr('enrollments') %></a></div>
+<% if @user && @user.can_access_sponsor? %>
+<div><a href="/sponsors"><%= tr('sponsors') %></a></div>
+<div class="subordinate"><a href="/sponsorships"><%= tr('sponsorships') %></a></div>
 <% end %>
-<div style="margin-top: 5px;"><a href="/impressum">Impressum</a></div>
+<div><%= link_to tr('logout'), {controller: :welcome, action: :logout}%></a></div>
+<% else %>
+<div><%= link_to tr('login'), {controller: :welcome, action: :login}%></a></div>
+<% end %>
+<div style="margin-top: 5px;"><a href="/impressum"><%= tr('impressum') %></a></div>

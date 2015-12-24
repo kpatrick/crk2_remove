@@ -1,10 +1,12 @@
-<h1>Family Years</h1>
+<%= link_to tr('home'), {controller: :welcome, action: :index} %>
+
+<h1><%= tr("family_years") %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Family</th>
-      <th>School Year</th>
+      <th><%= tr("family") %></th>
+      <th><%= tr("school_year") %></th>
       <th></th>
     </tr>
   </thead>
@@ -14,7 +16,7 @@
       <tr>
         <td><%= family_year.family.try(:community).try(:code) %> - <%= family_year.family.try(:name) %></td>
         <td><%= family_year.school_year %></td>
-        <td><%= link_to 'Show', family_year %></td>
+        <td><%= link_to tr('show'), family_year %></td>
       </tr>
     <% end %>
   </tbody>

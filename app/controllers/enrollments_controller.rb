@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
+  before_action :check_delete_permission, only: [:destroy]
 
   # GET /enrollments
   # GET /enrollments.json
@@ -15,6 +16,8 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
+    @enrollment.school_year = Time.new.year.to_s
+    @enrollment.child_id = params[:child_id] if params[:child_id]
   end
 
   # GET /enrollments/1/edit
@@ -28,7 +31,7 @@ class EnrollmentsController < ApplicationController
 
     respond_to do |format|
       if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.html { redirect_to @enrollment, notice: tr("enrollment_created") }
       else
         format.html { render :new }
       end
@@ -38,9 +41,10 @@ class EnrollmentsController < ApplicationController
   # PATCH/PUT /enrollments/1
   # PATCH/PUT /enrollments/1.json
   def update
+    @child = @enrollment.child
     respond_to do |format|
       if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        format.html { redirect_to @enrollment, notice: tr("enrollment_updated") }
       else
         format.html { render :edit }
       end
@@ -53,7 +57,7 @@ class EnrollmentsController < ApplicationController
     child = @enrollment.child
     @enrollment.destroy
     respond_to do |format|
-      format.html { redirect_to child, notice: 'Enrollment was successfully destroyed.' }
+      format.html { redirect_to child, notice: tr("enrollment_destroyed") }
     end
   end
 
@@ -61,10 +65,15 @@ class EnrollmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
+      @child = @enrollment.child
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white list through.  
     def enrollment_params
-      params.require(:enrollment).permit(:school_year, :child_id, :child_code, :sponsor_id, :sponsor_code, :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance_id, :newyear_attendance_notes, :midyear_attendance_id, :midyear_attendance_notes, :report_card, :report_notes, :work_form, :work_form_notes, :pass, :pass_notes, :grades, :grades_notes, :letter, :not_included)
+      if @user.can_access_sponsor?
+        params.require(:enrollment).permit(:school_year, :child_id, :sponsor_id, :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :newyear_attendance_notes, :midyear_attendance, :midyear_attendance_notes, :report_card, :report_notes, :work_form, :work_form_notes, :pass, :pass_notes, :grades, :grades_notes, :letter, :not_included, :close_up_photo, :full_photo)
+      else
+        params.require(:enrollment).permit(:school_year, :child_id,              :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :newyear_attendance_notes, :midyear_attendance, :midyear_attendance_notes, :report_card, :report_notes, :work_form, :work_form_notes, :pass, :pass_notes, :grades, :grades_notes, :letter, :not_included, :close_up_photo, :full_photo)
+      end
     end
 end

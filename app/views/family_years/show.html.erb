@@ -1,25 +1,29 @@
-<%= link_to 'Edit', edit_family_year_path(@family_year) %> |
-<%= link_to 'Home', {controller: :welcome, action: :index} %> |
-<%= link_to 'Family', @family_year.family %>
+<%= link_to tr('edit'), edit_family_year_path(@family_year) %> |
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('family'), @family_year.family %>
+
+<h1><%= tr('family_year') %></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Family:</strong>
+  <strong><%= tr('family') %>:</strong>
   <%= link_to "#{@family.try(:community).try(:code)} - #{@family.try(:name)}", @family %>
 </p>
 
 <p>
-  <strong>School Year:</strong>
+  <strong><%= tr('school_year') %>:</strong>
   <%= @family_year.school_year %>
 </p>
 
 <p>
-  <strong>Picture:</strong>
+  <strong><%= tr('picture') %>:</strong>
   <%= @family_year.picture %>
 </p>
 
+<% if @user.can_access_interview_notes? %>
 <p>
-  <strong>Notes:</strong>
+  <strong><%= tr('notes') %>:</strong>
   <%= @family_year.notes %>
 </p>
+<% end %>

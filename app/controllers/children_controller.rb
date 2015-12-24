@@ -1,5 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :check_delete_permission, only: [:destroy]
 
   # GET /children
   # GET /children.json
@@ -11,6 +12,7 @@ class ChildrenController < ApplicationController
   # GET /children/1.json
   def show
     @community = @child.try(:family).try(:community)
+    @enrollments = Enrollment.joins(:child).where("children.id = ?", @child.id).order("enrollments.school_year ASC")
   end
 
   # GET /children/new
@@ -39,7 +41,7 @@ class ChildrenController < ApplicationController
         saved = false
       end
       if saved
-        format.html { redirect_to @child, notice: t('child_created') }
+        format.html { redirect_to @child, notice: tr('child_created') }
       else
         format.html { render :new }
       end
@@ -60,7 +62,7 @@ class ChildrenController < ApplicationController
         updated = false
       end
       if updated
-        format.html { redirect_to @child, notice: t("child_updated")}
+        format.html { redirect_to @child, notice: tr("child_updated")}
       else
         format.html { render :edit }
       end
@@ -73,7 +75,7 @@ class ChildrenController < ApplicationController
     family = @child.family
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to family, notice: t("child_deleted") }
+      format.html { redirect_to family, notice: tr("child_deleted") }
     end
   end
 

@@ -9,7 +9,7 @@
 <body>
 <div><a href="/"><img src="/crk.png" height="100px"></a></div>
 <% if @user %>
-<span class="userinfo"><%= @user.role.capitalize %> // </span>
+<span class="userinfo"><%= tr("role_" + @user.role) %> // </span>
 <% end %>
 <%= yield %>
 <p style="font-style: italic; font-size: 10px">

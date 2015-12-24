@@ -1,5 +1,6 @@
 class SponsorsController < ApplicationController
-  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]
+  before_action :check_permission
+  before_action :set_sponsor, only: [:show, :edit, :update, :destroy]  
 
   # GET /sponsors
   # GET /sponsors.json
@@ -29,7 +30,7 @@ class SponsorsController < ApplicationController
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully created.' }
+        format.html { redirect_to @sponsor, notice: tr("sponsor_created") }
       else
         format.html { render :new }
       end
@@ -41,7 +42,7 @@ class SponsorsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsor.update(sponsor_params)
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully updated.' }
+        format.html { redirect_to @sponsor, notice: tr("sponsor_updated") }
       else
         format.html { render :edit }
       end
@@ -53,7 +54,7 @@ class SponsorsController < ApplicationController
   def destroy
     @sponsor.destroy
     respond_to do |format|
-      format.html { redirect_to sponsors_url, notice: 'Sponsor was successfully destroyed.' }
+      format.html { redirect_to sponsors_url, notice: tr("sponsor_destroyed") }
     end
   end
 
@@ -66,5 +67,10 @@ class SponsorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsor_params
       params.require(:sponsor).permit(:code, :donor_number, :given_name, :family_name, :link, :street_address, :city, :postal_code, :primary_email, :secondary_email, :primary_phone, :secondary_phone)
+    end
+
+    def check_permission
+      return if @user && @user.can_access_sponsor?
+      return head :unauthorized
     end
 end

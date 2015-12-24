@@ -20,6 +20,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  home: "Casa"
   communities: "Comunidades"
+  home: "Casa"
   sponsors: "Patrocinadores"
+  month:
+    jan: 'Enero'
+    feb: 'Febrero'
+    mar: 'Marzo'
+    apr: 'Abril'
+    may: 'Mayo'
+    jun: 'Junio'
+    jul: 'Julio'
+    aug: 'Agosto'
+    sep: 'Septiembre'
+    oct: 'Octubre'
+    nov: 'Noviembre'
+    dec: 'Diciembre'
+  activerecord:
+    models:
+      family_year: "Family Year"
+      community: "Comunidad"
+    attributes:
+      child:
+        code: "Code"
+        name: "Name"
+        notes: "Notes"

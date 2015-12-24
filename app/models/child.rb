@@ -2,16 +2,37 @@ class Child < ActiveRecord::Base
   belongs_to :family
   before_save :analyze_code
 
-  GENDERS_ARRAY = [["Male (Hombre)", "male"], ["Female (Mujer)", "female"]]
-  GENDERS_MAP = Hash[GENDERS_ARRAY.map{|a| [a[1], a[0]]}]
-  STATUSES_ARRAY  = [["In Program", "in_program"],["Out of Program", "out_of_program"],["Graduate", "graduate"]]
-  STATUSES_MAP = Hash[STATUSES_ARRAY.map{|a| [a[1], a[0]]}]
+  GENDERS_ARRAY = ["male", "female"]
+  STATUSES_ARRAY  = ["in_program", "out_of_program", "graduate"]
+
+  # translator is either a view or controller
+  def self.gender_to_code(translator)
+    GENDERS_ARRAY.map{|e| [translator.tr("child_gender." + e), e]}
+  end
+
+  def self.code_to_gender(translator)
+    h = {}
+    GENDERS_ARRAY.each{|e| h[e] = translator.tr("child_gender." + e)}
+    h
+  end
+
+  # translator is either a view or controller
+  def self.status_to_code(translator)
+    STATUSES_ARRAY.map{|e| [translator.tr("child_status." + e), e]}
+  end
+
+  def self.code_to_status(translator)
+    h = {}
+    STATUSES_ARRAY.each{|e| h[e] = translator.tr("child_status." + e)}
+    h
+  end
 
   def analyze_code
     self.derived_community = nil
     self.derived_number = nil
 
     if self.code.present?
+      self.code = self.code.upcase
       match_data = /^([a-zA-Z]*)([0-9]*)$/.match(self.code)
       if match_data && match_data.size == 3
         Rails.logger.debug "derived_community: #{match_data[1]}, derived_number: #{match_data[2]}"

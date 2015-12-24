@@ -1,13 +1,13 @@
-<%= link_to 'New', new_sponsorship_path %> | <%= link_to 'Home', {controller: :welcome, action: :index} %>
+<%= link_to tr('new'), new_sponsorship_path %> | <%= link_to tr('home'), {controller: :welcome, action: :index} %>
 
-<h1>Sponsorships</h1>
+<h1><%= tr('sponsorships') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>School Year</th>
-      <th>Sponsor</th>
-      <th>Number of Children</th>
+      <th><%= tr('school_year') %></th>
+      <th><%= tr('sponsor') %></th>
+      <th><%= tr('number_children') %></th>
       <th></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= sponsorship.school_year %></td>
         <td><%= "#{sponsorship.try(:sponsor).try(:code)} - #{sponsorship.try(:sponsor).try(:given_name)} #{sponsorship.try(:sponsor).try(:family_name)}" %></td>
         <td><%= sponsorship.number_children %></td>
-        <td><%= link_to 'Show', sponsorship %></td>
+        <td><%= link_to tr('show'), sponsorship %></td>
       </tr>
     <% end %>
   </tbody>

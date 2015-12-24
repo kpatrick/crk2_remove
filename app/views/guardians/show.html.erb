@@ -1,47 +1,47 @@
-<%= link_to 'Edit', edit_guardian_path(@guardian) %> |
-<%= link_to 'Home', {controller: :welcome, action: :index} %> |
-<%= link_to 'Family', @guardian.family %>
+<%= link_to tr('edit'), edit_guardian_path(@guardian) %> |
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('family'), @guardian.family %>
 
-<h1>Guardian</h1>
+<h1><%= tr('guardian') %></h1>
 
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Family:</strong>
+  <strong><%= tr('family') %>:</strong>
   <%= link_to "#{@guardian.family.try(:community).try(:code)} - #{@guardian.family.try(:name)}", @guardian.family %>
 </p>
 
 <p>
-  <strong>Family Names:</strong>
+  <strong><%= tr('family_names') %>:</strong>
   <%= @guardian.family_name1 %> <%= @guardian.family_name2 %>
 </p>
 
 <p>
-  <strong>Given Names:</strong>
+  <strong><%= tr('given_names') %>:</strong>
   <%= @guardian.given_name1 %> <%= @guardian.given_name2 %>
 </p>
 
 <p>
-  <strong>Preferred Name:</strong>
+  <strong><%= tr('preferred_name') %>:</strong>
   <%= @guardian.preferred_name %>
 </p>
 
 <p>
-  <strong>Relationship:</strong>
-  <%= Guardian::RELATIONSHIPS_MAP[@guardian.relationship] %>
+  <strong><%= tr('relationship') %>:</strong>
+  <%= Guardian.code_to_relationship(self)[@guardian.relationship] %>
 </p>
 
 <p>
-  <strong>Active:</strong>
-  <%= @guardian.active %>
+  <strong><%= tr('active') %>:</strong>
+  <%= @guardian.active ? tr('bool.true') : tr('bool.false') %>
 </p>
 
 <p>
-  <strong>Primary:</strong>
-  <%= @guardian.primary %>
+  <strong><%= tr('primary') %>:</strong>
+  <%= @guardian.primary ? tr('bool.true') : tr('bool.false') %>
 </p>
 
 <p>
-  <strong>Phones:</strong>
+  <strong><%= tr('phones') %>:</strong>
   <%= @guardian.primary_phone %> <%= @guardian.secondary_phone %>
 </p>

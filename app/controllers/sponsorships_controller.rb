@@ -1,4 +1,5 @@
 class SponsorshipsController < ApplicationController
+  before_action :check_permission
   before_action :set_sponsorship, only: [:show, :edit, :update, :destroy]
 
   # GET /sponsorships
@@ -17,6 +18,7 @@ class SponsorshipsController < ApplicationController
   def new
     @sponsorship = Sponsorship.new
     @sponsorship.sponsor_id = params[:sponsor_id] if params[:sponsor_id]
+    @sponsorship.school_year = Time.new.year.to_s
   end
 
   # GET /sponsorships/1/edit
@@ -30,7 +32,7 @@ class SponsorshipsController < ApplicationController
 
     respond_to do |format|
       if @sponsorship.save
-        format.html { redirect_to @sponsorship, notice: t('sponsorship_created') }
+        format.html { redirect_to @sponsorship, notice: tr('sponsorship_created') }
       else
         format.html { render :new }
       end
@@ -42,7 +44,7 @@ class SponsorshipsController < ApplicationController
   def update
     respond_to do |format|
       if @sponsorship.update(sponsorship_params)
-        format.html { redirect_to @sponsorship, notice: t('sponsorship_updated') }
+        format.html { redirect_to @sponsorship, notice: tr('sponsorship_updated') }
       else
         format.html { render :edit }
       end
@@ -55,7 +57,7 @@ class SponsorshipsController < ApplicationController
     sponsor = @sponsorship.sponsor
     @sponsorship.destroy
     respond_to do |format|
-      format.html { redirect_to sponsor, notice: t('sponsorship_destroyed') }
+      format.html { redirect_to sponsor, notice: tr('sponsorship_destroyed') }
     end
   end
 
@@ -68,5 +70,10 @@ class SponsorshipsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sponsorship_params
       params.require(:sponsorship).permit(:school_year, :sponsor_id, :sponsor_code, :number_children, :dollar_amount)
+    end
+
+    def check_permission
+      return if @user && @user.can_access_sponsor?
+      return head :unauthorized
     end
 end
