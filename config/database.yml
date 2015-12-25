@@ -27,8 +27,8 @@ test:
   <<: *default
 
   # sqlite
-  #adapter: sqlite3
-  #database: db/crk2_test.sqlite3
+  adapter: sqlite3
+  database: db/crk2_test.sqlite3
 
   # postgres
   #adapter: postgresql
