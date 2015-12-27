@@ -23,7 +23,7 @@ class Enrollment < ActiveRecord::Base
                   "grade4", "grade5", "grade6",
                   "grade7", "grade8", "grade9",
                   "grade10", "grade11", "grade12",
-                  "aula_inter"]
+                  "special_needs"]
 
   # translator is either a view or controller
   def self.grades_to_code(translator)

@@ -35,6 +35,7 @@
       <th><%= tr('relationship') %></th>
       <th><%= tr('active') %></th>
       <th><%= tr('primary') %></th>
+      <th><%= tr('phones') %></th>
       <th></th>
     </tr>
   </thead>
@@ -48,6 +49,7 @@
         <td><%= Guardian::code_to_relationship(self)[guardian.relationship] %></td>
         <td><%= guardian.active ? tr('bool.true') : tr('bool.false') %></td>
         <td><%= guardian.primary ? tr('bool.true') : tr('bool.false') %></td>
+        <td><%= guardian.primary_phone %> <%= guardian.secondary_phone %></td>
         <td><%= link_to tr('show'), guardian %></td>
       </tr>
     <% end %>
@@ -70,6 +72,7 @@
       <th><%= tr('status') %></th>
       <th><%= tr('gender') %></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -84,6 +87,7 @@
         <td><%= Child::code_to_status(self)[child.status] %></td>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
+        <td><%= link_to tr('new_enrollment'), {controller: :enrollments, action: :new, child_id: child.id} %></td>
       </tr>
     <% end %>
   </tbody>
