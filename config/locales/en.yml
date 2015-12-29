@@ -49,7 +49,7 @@ en:
   family: "Family"
   family_created: "Family was successfully created."
   family_updated: "Family was successfully updated."
-  family_destroyed: "Family was successfully destroyed."
+  family_deleted: "Family was successfully destroyed."
   family_name: "Family Name"
   family_names: "Family Names"
   family_name1: "Family Name 1"

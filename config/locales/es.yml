@@ -49,7 +49,7 @@ es:
   family: "Familia"
   family_created: "La familia se ha creado correctamente."
   family_updated: "La familia se ha actualizado correctamente."
-  family_destroyed: "La familia fue destruido."
+  family_deleted: "La familia fue destruido."
   family_name: "Apellido"
   family_names: "Apellidos"
   family_name1: "Primer Apellido"
