@@ -1,4 +1,7 @@
 <%= form_for(@family_year) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
   <% if @family_year.errors.any? %>
     <div id="error_explanation">
       <h2><%= tr("record_not_saved") %></h2>
@@ -30,7 +33,4 @@
     <%= f.text_area :notes, cols: 40, rows: 5 %>
   </div>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

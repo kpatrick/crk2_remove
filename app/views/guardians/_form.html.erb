@@ -1,4 +1,7 @@
 <%= form_for(@guardian) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
   <% if @guardian.errors.any? %>
     <div id="error_explanation">
       <h2><%= tr("record_not_saved") %></h2>
@@ -49,10 +52,10 @@
   </div>
   <div style="clear:both;"></div>
   <div class="field float">
-    <%= f.check_box :active %> <%= f.label :active, tr("active") %>
+    <%= f.label :active, tr("active") %><br><%= f.check_box :active %> 
   </div>
   <div class="field float">
-    <%= f.check_box :primary %> <%= f.label :primary, tr("primary") %>
+    <%= f.label :primary, tr("primary") %><br><%= f.check_box :primary %> 
   </div>
   <div style="clear:both;"></div>
   <div class="field float">
@@ -64,7 +67,4 @@
     <%= f.text_field :secondary_phone %>
   </div>
   <div style="clear:both;"></div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

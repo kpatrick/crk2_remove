@@ -1,4 +1,8 @@
 <%= form_for(@enrollment) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
   <% if @enrollment.errors.any? %>
     <div id="error_explanation">
       <h2><%= tr("record_not_saved") %></h2>
@@ -89,54 +93,36 @@
   %>
   <div class="field float">
   <%= f.label :gender, tr('midyear_attendance') %><br><%= f.select(:midyear_attendance, midyear_attendance_array) %>
-  </div>
+  </div>  
   <div style="clear:both;"></div>
   <div class="field float">
-    <%= f.label :newyear_attendance_notes, tr('newyear_attendance_notes') %><br>
-    <%= f.text_area :newyear_attendance_notes, cols: 40, rows: 5 %>
+    <%= f.label :report_card, tr('report_card')%><br><%= f.check_box :report_card %>
   </div>
   <div class="field float">
-    <%= f.label :midyear_attendance_notes, tr('midyear_attendance_notes') %><br>
-    <%= f.text_area :midyear_attendance_notes, cols: 40, rows: 5 %>
+    <%= f.label :work_form, tr('work_form') %><br><%= f.check_box :work_form %>
   </div>
+  <div class="field float">
+    <%= f.label :pass, tr('pass') %><br><%= f.check_box :pass %> 
+  </div>  
+  <div class="field float">
+    <%= f.label :letter, tr("letter") %><br><%= f.check_box :letter %>
+  </div>
+  <div class="field float">
+    <%= f.label :not_included, tr('not_included') %><br><%= f.check_box :not_included %>
+  </div>
+  
   <div style="clear:both;"></div>
-  <div class="field">
-    <%= f.check_box :report_card %> <%= f.label :report_card, tr('report_card')%>
-  </div>
-  <div class="field">
-    <%= f.label :report_notes, tr('report_notes') %><br>
-    <%= f.text_area :report_notes, cols: 40, rows: 5 %>
-  </div>
-  <div class="field">
-    <%= f.check_box :work_form %> <%= f.label :work_form, tr('work_form') %>
-  </div>
-  <div class="field">
-    <%= f.label :work_form_notes, tr('work_form_notes') %><br>
-    <%= f.text_area :work_form_notes, cols: 40, rows: 5 %>
-  </div>
-  <div class="field">
-    <%= f.check_box :pass %> <%= f.label :pass, tr('pass') %>
-  </div>
-  <div class="field">
-    <%= f.label :pass_notes, tr('pass_notes') %><br>
-    <%= f.text_area :pass_notes, cols: 40, rows: 5 %>
-  </div>
   <%
   grades_array = Enrollment.grades_to_code(self)
   grades_array.insert(0, ["", nil])
   %>
-  <%= f.label :grades, tr('grades') %><br><%= f.select(:grades, grades_array) %>
+  <div class="field float">
+  <%= f.label :newyear_grade, tr('newyear_grade') %><br><%= f.select(:newyear_grade, grades_array) %>
   </div>
-  <div class="field">
-    <%= f.label :grades_notes, tr('grades_notes') %><br>
-    <%= f.text_area :grades_notes, cols: 40, rows: 5 %>
+  <div class="field float">
+    <%= f.label :midyear_grade, tr('midyear_grade') %><br><%= f.select(:midyear_grade, grades_array) %>
   </div>
-  <div class="field">
-    <%= f.check_box :letter %> <%= f.label :letter, tr("letter") %>
-  </div>
-  <div class="field">
-    <%= f.check_box :not_included %> <%= f.label :not_included, tr('not_included') %>
-  </div>
+  <div style="clear:both;"></div>  
   <div class="field">
     <%= f.label :close_up_photo, tr("close_up_photo") %><br>
     <%= f.text_field :close_up_photo %>
@@ -145,7 +131,8 @@
     <%= f.label :full_photo, tr("full_photo") %><br>
     <%= f.text_field :full_photo %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= f.label :notes, tr('notes') %><br>
+    <%= f.text_area :notes, cols: 40, rows: 5 %>
   </div>
 <% end %>

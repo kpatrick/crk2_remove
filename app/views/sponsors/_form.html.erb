@@ -1,4 +1,7 @@
 <%= form_for(@sponsor) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
   <% if @sponsor.errors.any? %>
     <div id="error_explanation">
       <h2><%= tr("record_not_saved") %></h2>
@@ -64,7 +67,4 @@
     <%= f.text_field :secondary_phone %>
   </div>
   <div style="clear:both;"></div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

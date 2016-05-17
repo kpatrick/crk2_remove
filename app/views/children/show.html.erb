@@ -1,5 +1,5 @@
-<%= link_to tr('edit'), edit_child_path(@child) %> |
-<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('edit'), edit_child_path(@child) %> ::
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> ::
 <%= link_to tr('family'), @child.family %>
 
 <h1><%=tr('child')%></h1>
@@ -48,7 +48,9 @@
 
 <p>
   <strong><%=tr('notes')%>:</strong>
-  <%= @child.notes %>
+  <% if @child.notes.present? %>
+  <pre><%= @child.notes %></pre>
+  <% end %>
 </p>
 
 <br>

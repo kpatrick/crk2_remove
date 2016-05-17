@@ -1,5 +1,5 @@
-<%= link_to tr('edit'), edit_family_year_path(@family_year) %> |
-<%= link_to tr('home'), {controller: :welcome, action: :index} %> |
+<%= link_to tr('edit'), edit_family_year_path(@family_year) %> ::
+<%= link_to tr('home'), {controller: :welcome, action: :index} %> ::
 <%= link_to tr('family'), @family_year.family %>
 
 <h1><%= tr('family_year') %></h1>
@@ -24,6 +24,8 @@
 <% if @user.can_access_interview_notes? %>
 <p>
   <strong><%= tr('notes') %>:</strong>
-  <%= @family_year.notes %>
+  <% if @family_year.notes.present? %>
+  <pre><%= @family_year.notes %></pre>
+  <% end %>
 </p>
 <% end %>

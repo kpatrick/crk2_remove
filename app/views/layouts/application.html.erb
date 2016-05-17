@@ -2,18 +2,19 @@
 <html>
 <head>
   <title>Costa Rica Kids</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div><img src="/crk.png" height="100px"></div>
+<div style="margin-bottom:5px;"><img src="/crk.png" height="100px"></div>
 <% if @user %>
-<span class="userinfo"><%= tr("role_" + @user.role) %> // </span>
+<span class="userinfo" style="margin-right:20px"><%= tr("role_" + @user.role) %></span>
 <% end %>
 <%= yield %>
-<p style="font-style: italic; font-size: 10px">
-  Costa Rica Kids School Sponsorship Program<br>
-  &copy; 2015 Foursquare Gospel Church of Canada</p>
+<p style="font-style: italic; font-size: 10px; margin-top:20px">
+  Costa Rica Kids School Sponsorship Program &middot; Foursquare Gospel Church of Canada &middot; Private and Confidential
+</p>
 </body>
 </html>

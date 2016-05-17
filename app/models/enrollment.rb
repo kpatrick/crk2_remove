@@ -19,10 +19,12 @@ class Enrollment < ActiveRecord::Base
   end
 
 
-  GRADES_ARRAY = ["grade1", "grade2", "grade3",
+  GRADES_ARRAY = ["pre_kinder", "kinder",
+                  "grade1", "grade2", "grade3",
                   "grade4", "grade5", "grade6",
                   "grade7", "grade8", "grade9",
                   "grade10", "grade11", "grade12",
+                  "university", "university_grad",
                   "special_needs"]
 
   # translator is either a view or controller
