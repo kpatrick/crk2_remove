@@ -76,6 +76,7 @@ es:
   name: "Nombre"
   midyear_attendance: "Asistencia de Julio "
   midyear_attendance_notes: "Apuntes de Asistencia de Julio"
+  midyear_grade: "Grado en Julio"
   midyear_pant_size: "Talla de Pantalones (Julio)"
   midyear_shirt_size: "Talla de Camisa (Julio)"
   midyear_shoe_size: "Tallas de Zapatos (Julio)"
@@ -90,6 +91,7 @@ es:
   new_sponsorship: "Nuevo Patrocinio"
   newyear_attendance: "Asistencia de Enero"
   newyear_attendance_notes: "Apuntes de Asistencia de Enero"
+  newyear_grade: "Grado en Enero"
   newyear_pant_size: "Talla de Pantalones (Enero)"
   newyear_shirt_size: "Talla de Camisa (Enero)"
   newyear_shoe_size: "Tallas de Zapatos (Enero)"
@@ -157,6 +159,10 @@ es:
     out_of_program: "Fuera del Programa"
     other: "Otro"
   enrollment_grades:
+    "pre_kinder": "Pre-Kinder"
+    "kinder": "Kinder"
+    "university": "Universidad"
+    "university_grad": "Graduado de Universidad"
     special_needs: "Aula Intergrada"
   enrollment_shirt_sizes:
     other: "Otro"
