@@ -17,17 +17,19 @@ class ReportsController < ApplicationController
         family_count = 0
         family_text = ""        
         children = Child.joins(:family).where("families.id = ?", family.id).order("children.code ASC")
-        children.each{ |child|
-          family_text += "            " + child.given_names + "; " + child.family_names
+        children.each{ |child|          
           enrollment = Enrollment.joins(:child).where("children.id = ? and enrollments.school_year = ?", child.id, year).first
-          if enrollment && !enrollment.not_included && child.status == "in_program"
-            family_text += " (Included)"
-            in_program_community_count += 1
-            in_program_family_count += 1            
-          end
-          community_count += 1
-          family_count += 1
-          family_text += "\n"
+          if enrollment 
+            family_text += "            " + child.given_names + "; " + child.family_names
+            if !enrollment.not_included
+              family_text += " (Included)"
+              in_program_community_count += 1
+              in_program_family_count += 1            
+            end
+            community_count += 1
+            family_count += 1
+            family_text += "\n"
+          end          
         }        
         family_text = "        " + family.name + " " + in_program_family_count.to_s + "/" + family_count.to_s + "\n" + family_text
         community_text += family_text
