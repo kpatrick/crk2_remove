@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   def can_access_interview_notes?
     ["admin", "interviewer"].include?(role)
   end
+  
+  def can_access_reports?
+    ["admin"].include?(role)
+  end   
 
   def self.load_file(file_name)
     text=File.open(file_name).read

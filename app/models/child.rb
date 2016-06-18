@@ -27,6 +27,14 @@ class Child < ActiveRecord::Base
     h
   end
 
+  def given_names
+    [given_name1, given_name2].compact.join(" ")
+  end
+  
+  def family_names
+    [family_name1, family_name2].compact.join(" ")
+  end
+  
   def analyze_code
     self.derived_community = nil
     self.derived_number = nil

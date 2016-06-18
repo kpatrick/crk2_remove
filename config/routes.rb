@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   match 'logout' => 'welcome#logout', :via => [:get, :post]
   get 'impressum' => 'welcome#impressum'
   get 'communities/:id/next_code' => 'communities#next_code'
-
+  get 'reports/daily_report' => 'reports#daily_report'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
