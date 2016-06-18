@@ -21,7 +21,7 @@ class ReportsController < ApplicationController
           family_text += "            " + child.given_names + "; " + child.family_names
           enrollment = Enrollment.joins(:child).where("children.id = ? and enrollments.school_year = ?", child.id, year).first
           if enrollment && !enrollment.not_included && child.status == "in_program"
-            family_text += " (In Program)"
+            family_text += " (Included)"
             in_program_community_count += 1
             in_program_family_count += 1            
           end
