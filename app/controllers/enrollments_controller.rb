@@ -16,7 +16,12 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
-    @enrollment.school_year = Time.new.year.to_s
+    now = Time.new
+    if now.month < 11
+      @enrollment.school_year = Time.new.year.to_s
+    else
+      @enrollment.school_year = (Time.new.year + 1).to_s
+    end
     @enrollment.child_id = params[:child_id] if params[:child_id]
   end
 
@@ -68,7 +73,7 @@ class EnrollmentsController < ApplicationController
       @child = @enrollment.child
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.  
+    # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
       if @user.can_access_sponsor?
         params.require(:enrollment).permit(:school_year, :child_id, :sponsor_id, :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :midyear_attendance, :report_card, :work_form, :pass, :newyear_grade, :midyear_grade, :notes, :letter, :not_included, :close_up_photo, :full_photo)
