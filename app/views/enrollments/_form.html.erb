@@ -93,24 +93,32 @@
   %>
   <div class="field float">
   <%= f.label :gender, tr('midyear_attendance') %><br><%= f.select(:midyear_attendance, midyear_attendance_array) %>
-  </div>  
+  </div>
   <div style="clear:both;"></div>
   <div class="field float">
-    <%= f.label :report_card, tr('report_card')%><br><%= f.check_box :report_card %>
+    <%= f.label :report_card, tr('newyear_report_card')%><br><%= f.check_box :report_card %>
   </div>
   <div class="field float">
-    <%= f.label :work_form, tr('work_form') %><br><%= f.check_box :work_form %>
+    <%= f.label :work_form, tr('newyear_work_form') %><br><%= f.check_box :work_form %>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="field float">
+    <%= f.label :midyear_report_card, tr('midyear_report_card')%><br><%= f.check_box :midyear_report_card %>
   </div>
   <div class="field float">
-    <%= f.label :pass, tr('pass') %><br><%= f.check_box :pass %> 
-  </div>  
+    <%= f.label :midyear_work_form, tr('midyear_work_form') %><br><%= f.check_box :midyear_work_form %>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="field float">
+    <%= f.label :pass, tr('pass') %><br><%= f.check_box :pass %>
+  </div>
   <div class="field float">
     <%= f.label :letter, tr("letter") %><br><%= f.check_box :letter %>
   </div>
   <div class="field float">
     <%= f.label :not_included, tr('not_included') %><br><%= f.check_box :not_included %>
   </div>
-  
+
   <div style="clear:both;"></div>
   <%
   grades_array = Enrollment.grades_to_code(self)
@@ -122,7 +130,7 @@
   <div class="field float">
     <%= f.label :midyear_grade, tr('midyear_grade') %><br><%= f.select(:midyear_grade, grades_array) %>
   </div>
-  <div style="clear:both;"></div>  
+  <div style="clear:both;"></div>
   <div class="field">
     <%= f.label :close_up_photo, tr("close_up_photo") %><br>
     <%= f.text_field :close_up_photo %>

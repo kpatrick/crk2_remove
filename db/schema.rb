@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516144454) do
+ActiveRecord::Schema.define(version: 20161112200052) do
 
   create_table "children", force: true do |t|
     t.string   "code"
@@ -68,13 +68,15 @@ ActiveRecord::Schema.define(version: 20160516144454) do
     t.boolean  "not_included"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "close_up_photo"
-    t.string   "full_photo"
     t.string   "newyear_attendance"
     t.string   "midyear_attendance"
+    t.string   "close_up_photo"
+    t.string   "full_photo"
     t.text     "notes"
     t.text     "newyear_grade"
     t.text     "midyear_grade"
+    t.boolean  "midyear_report_card"
+    t.boolean  "midyear_work_form"
   end
 
   create_table "families", force: true do |t|

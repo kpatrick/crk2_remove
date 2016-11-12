@@ -74,13 +74,23 @@
 </p>
 
 <p>
-  <strong><%= tr("report_card") %>:</strong>
+  <strong><%= tr("newyear_report_card") %>:</strong>
   <%= @enrollment.report_card ? tr('bool.true') : tr('bool.false') %>
 </p>
 
 <p>
-  <strong><%= tr("work_form") %>:</strong>
+  <strong><%= tr("newyear_work_form") %>:</strong>
   <%= @enrollment.work_form ? tr('bool.true') : tr('bool.false') %>
+</p>
+
+<p>
+  <strong><%= tr("midyear_report_card") %>:</strong>
+  <%= @enrollment.midyear_report_card ? tr('bool.true') : tr('bool.false') %>
+</p>
+
+<p>
+  <strong><%= tr("midyear_work_form") %>:</strong>
+  <%= @enrollment.midyear_work_form ? tr('bool.true') : tr('bool.false') %>
 </p>
 
 <p>
