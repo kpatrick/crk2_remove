@@ -41,11 +41,13 @@
 </table>
 <% end %>
 
-
+<br><br>
 
 <h3><%= tr('children') %></h3>
 
 <% if @children.present? %>
+<%= @children.to_a.select{|c| c.status == "in_program"}.length %>/<%= @children.to_a.length %>
+<%= tr('child_status.in_program') %>
 <table>
   <thead>
     <tr>
@@ -63,14 +65,14 @@
 
   <tbody>
     <% @children.each do |child| %>
-      <tr>
+      <tr <%= child.status != "in_program" ? "class=out_of_program": "" %>>
         <td><%= child.code %></td>
         <td><%= child.family.try(:community).try(:code) %> - <%= child.family.try(:name) %></td>
         <td><%= child.family_name1 %> <%= child.family_name2 %></td>
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.preferred_name %></td>
         <td><%= child.dob %></td>
-        <td><%= Child::code_to_status(self)[child.status] %></td>
+        <td class="status"><%= child.status == "in_program" ? "✓": "" %></td>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
       </tr>

@@ -42,6 +42,13 @@
    tr:nth-child(even) {
      background: #DDD;
    }
+   tr.out_of_program td, tr.out_of_program td a {
+     # text-decoration: line-through;
+     color: grey
+   }
+   td.status {
+     text-align: center;
+   }
    th {
      background: #DDD;
    }
