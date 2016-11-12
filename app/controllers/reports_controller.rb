@@ -4,7 +4,8 @@ class ReportsController < ApplicationController
   def daily_report
     now = Time.now
     year = params[:year] || now.year.to_s
-    text = "<h1>Coasta Rica Kids Daily Report " + year +"</h1>\n"
+    text = "<head><meta charset='utf-8'></head>"
+    text += "<h1>Coasta Rica Kids Daily Report " + year +"</h1>\n"
     text +="<small><i>" + now.iso8601 + "<i></small>\n"
     communities = Community.all.order(code: :asc)
     communities.each { |community|
