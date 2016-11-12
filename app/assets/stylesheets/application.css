@@ -40,7 +40,7 @@
      text-align: left;
    }
    tr:nth-child(even) {
-     background: #EEE;
+     background: #DDD;
    }
    th {
      background: #DDD;
