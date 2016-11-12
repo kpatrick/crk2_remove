@@ -329,3 +329,5 @@ en:
     grand_father: "Grand Father"
     older_sibling: "Older Sibling"
     other: "Other"
+  errors:
+    duplicate: "Duplicate"

@@ -2,6 +2,11 @@ class Enrollment < ActiveRecord::Base
   belongs_to :child
   belongs_to :sponsor
 
+  validate do |r|
+    if Enrollment.exists?(child_id: r.child_id, school_year: r.school_year)
+      r.errors[:base] << I18n.t("errors.duplicate")
+    end
+  end
 
   ATTENDANCE_ARRAY = ["yes", "no", "sick",
                       "graduated", "university_sponsored", "university_not_sponsored",
