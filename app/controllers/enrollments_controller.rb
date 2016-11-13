@@ -16,12 +16,7 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/new
   def new
     @enrollment = Enrollment.new
-    now = Time.new
-    if now.month < 11
-      @enrollment.school_year = Time.new.year.to_s
-    else
-      @enrollment.school_year = (Time.new.year + 1).to_s
-    end
+    @enrollment.school_year = Time.new.year.to_s
     @enrollment.child_id = params[:child_id] if params[:child_id]
   end
 
