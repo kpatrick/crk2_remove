@@ -3,7 +3,7 @@ class Enrollment < ActiveRecord::Base
   belongs_to :sponsor
 
   validate do |r|
-    if Enrollment.exists?(child_id: r.child_id, school_year: r.school_year)
+    if Enrollment.where(child_id: r.child_id, school_year: r.school_year).where.not(id: r.id).exists?
       r.errors[:base] << I18n.t("errors.duplicate")
     end
   end
