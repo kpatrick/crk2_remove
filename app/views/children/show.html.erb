@@ -63,6 +63,7 @@
   <thead>
     <tr>
       <th><%= tr("school_year") %></th>
+      <th><%= tr("not_included") %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -71,6 +72,7 @@
     <% @enrollments.each do |enrollment| %>
       <tr>
         <td><%= enrollment.school_year %></td>
+        <td><%= enrollment.not_included ?  "✓": "✘" %></td>
         <td><%= link_to tr('show'), enrollment %></td>
       </tr>
     <% end %>

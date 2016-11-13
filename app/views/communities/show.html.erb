@@ -55,7 +55,6 @@
       <th><%= tr('family') %></th>
       <th><%= tr('family_names') %></th>
       <th><%= tr('given_names') %></th>
-      <th><%= tr('preferred_name') %></th>
       <th><%= tr('date_of_birth') %></th>
       <th><%= tr('status') %></th>
       <th><%= tr('gender') %></th>
@@ -70,9 +69,8 @@
         <td><%= child.family.try(:community).try(:code) %> - <%= child.family.try(:name) %></td>
         <td><%= child.family_name1 %> <%= child.family_name2 %></td>
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
-        <td><%= child.preferred_name %></td>
         <td><%= child.dob %></td>
-        <td class="status"><%= child.status == "in_program" ? "✓": "" %></td>
+        <td class="status"><%= child.status == "in_program" ? "✓": "✘" %></td>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
       </tr>
