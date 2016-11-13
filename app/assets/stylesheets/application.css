@@ -49,6 +49,9 @@
    td.status {
      text-align: center;
    }
+   p.notes {
+      white-space: pre-line;
+   }
    th {
      background: #DDD;
    }
