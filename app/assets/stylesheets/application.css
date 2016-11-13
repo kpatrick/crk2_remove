@@ -46,9 +46,10 @@
      # text-decoration: line-through;
      color: grey
    }
-   td.status {
+   .status, .not_included {
      text-align: center;
-   }
+     # font-weight: bold;
+  }
    p.notes {
       white-space: pre-line;
    }

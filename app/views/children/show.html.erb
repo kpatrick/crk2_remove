@@ -72,7 +72,7 @@
     <% @enrollments.each do |enrollment| %>
       <tr>
         <td><%= enrollment.school_year %></td>
-        <td><%= enrollment.not_included ?  "✓": "✘" %></td>
+        <td class="not_included"><%= enrollment.not_included ?  "✓": "✘" %></td>
         <td><%= link_to tr('show'), enrollment %></td>
       </tr>
     <% end %>

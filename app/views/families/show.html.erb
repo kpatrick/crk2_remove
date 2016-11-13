@@ -71,6 +71,7 @@
       <th><%= tr('given_names') %></th>
       <th><%= tr('date_of_birth') %></th>
       <th><%= tr('status') %></th>
+      <th><%= tr('not_included') %></th>
       <th><%= tr('gender') %></th>
       <th></th>
       <th></th>
@@ -78,13 +79,20 @@
   </thead>
 
   <tbody>
-    <% @children.each do |child| %>
+    <% @children.each do |child|
+       enrollment = Enrollment.where(child_id: child.id).order(school_year: :desc).first
+    %>
       <tr <%= child.status != "in_program" ? "class=out_of_program": "" %>>
         <td><%= child.code %></td>
         <td><%= child.family_name1 %> <%= child.family_name2 %></td>
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.dob %></td>
         <td class="status"><%= child.status == "in_program" ? "✓": "✘" %></td>
+        <% if enrollment %>
+        <td class="not_included"><%= enrollment.school_year %> <%= enrollment.not_included ? "✓": "✘" %></td>
+        <% else %>
+        <td></td>
+        <% end %>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
         <td><%= link_to tr('new_enrollment'), {controller: :enrollments, action: :new, child_id: child.id} %></td>
