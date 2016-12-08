@@ -2,6 +2,18 @@
 <%= link_to tr('home'), {controller: :welcome, action: :index} %> ::
 <%= link_to tr('community'), @community %>
 
+<script>
+    $("body").on("click", ".quick_edit", function(){
+        //$("#modal").modal();  
+    });
+</script>
+
+<div id="modal" class="modal" tabindex="-1" style="display:none;">
+  <button type="button" class="btn btn-default" id="show_answer">Show Answer</button> 
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+
+  
 <h1><%= tr('family') %></h1>
 
 <p id="notice"><%= notice %></p>
@@ -75,6 +87,7 @@
       <th><%= tr('gender') %></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -95,6 +108,7 @@
         <% end %>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
+        <td class="quick_edit">Quick Edit</td>
         <td><%= link_to tr('new_enrollment'), {controller: :enrollments, action: :new, child_id: child.id} %></td>
       </tr>
     <% end %>
