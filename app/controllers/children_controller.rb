@@ -1,5 +1,5 @@
 class ChildrenController < ApplicationController
-  before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :set_child, only: [:show, :edit, :update, :destroy, :quick_edit_read, :quick_edit_update]
   before_action :check_delete_permission, only: [:destroy]
 
   # GET /children
@@ -79,6 +79,43 @@ class ChildrenController < ApplicationController
     end
   end
 
+  def quick_edit_read
+    enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
+    result = {status: (@child.status), enrollment: (enrollment ? {enrollment.school_year => enrollment.not_included} : nil)}
+    render :json => result
+  end
+  
+  def quick_edit_update
+    status = request["status"]    
+    if status == "in_program"
+      @child.status = "in_program"
+    else
+      @child.status = "out_of_program"
+    end  
+    begin
+      @child.save
+    rescue => e
+      render json: {}, status: :internal_server_error
+    end  
+    
+    not_included = request["not_included"]
+    enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
+    if enrollment && enrollment.school_year == Time.new.year.to_s
+      enrollment.not_included = not_included
+    else 
+      enrollment = Enrollment.new
+      enrollment.school_year = Time.new.year.to_s
+      enrollment.child_id = @child.id
+      enrollment.not_included = not_included
+    end  
+    begin
+      enrollment.save
+    rescue => e
+      render json: {}, status: :internal_server_error
+    end   
+    render json: {status: @child.status, not_included: enrollment.not_included}
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_child

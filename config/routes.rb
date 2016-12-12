@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'impressum' => 'welcome#impressum'
   get 'communities/:id/next_code' => 'communities#next_code'
   get 'reports/daily_report' => 'reports#daily_report'
+  get 'children/:id/quick_edit_read' => 'children#quick_edit_read'
+  post 'children/:id/quick_edit_update' => 'children#quick_edit_update'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

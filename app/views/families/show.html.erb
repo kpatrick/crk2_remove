@@ -3,14 +3,65 @@
 <%= link_to tr('community'), @community %>
 
 <script>
+    var childId = null;
+    var currentEl = null;
+    
     $("body").on("click", ".quick_edit", function(){
-        //$("#modal").modal();  
+        currentEl = this;
+        childId = $(currentEl).data("child-id");
+        $("#modal").modal();
+    });
+    $("body").on("click", "#cancel_button", function(){
+      $.modal.close();
+    });
+    
+    $("body").on($.modal.OPEN, "#modal", function(event, modal){
+      $.ajax("/children/" + childId + "/quick_edit_read").
+          fail(function(){alert("<%=tr('record_not_saved')%>")}).  // TODO fix message
+          done(function(data){
+              $("#modal-status").prop("checked", data.status === "in_program");
+              var not_included = (data.enrollment && data.enrollment["<%=Time.new.year.to_s%>"]) || false;
+              $("#modal-not-included").prop("checked", not_included);
+          }); 
+    });
+    
+    $("body").on("click", "#update_button", function(){
+      var modal_status = $("#modal-status").prop('checked')
+      var modal_not_included = $("#modal-not-included").prop('checked');
+      
+      $.ajax("/children/" + childId + "/quick_edit_update", {
+        method: "POST",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify({'status': (modal_status ? "in_program" : "out_of_program"), 'not_included': modal_not_included})
+      }).fail(function(){alert("<%=tr('record_not_saved')%>")}).
+         done(function(data){
+           $.ajax("/children/" + childId + "/quick_edit_read").
+               fail(function(){alert("<%=tr('record_not_saved')%>")}). // TODO fix message
+               done(function(data){
+                 var status = (data.status === "in_program") ? "✓": "✘";
+                 var not_included = "";
+                 if (data.enrollment) {
+                   var school_year = Object.keys(data.enrollment)[0];
+                   not_included = school_year + " " + (data.enrollment[school_year] ? "✓": "✘");
+                 }
+                 $(currentEl).closest("tr").find(".status").text(status);
+                 $(currentEl).closest("tr").find(".not_included").text(not_included);
+                 $.modal.close();
+               });
+         });
+      
     });
 </script>
 
-<div id="modal" class="modal" tabindex="-1" style="display:none;">
-  <button type="button" class="btn btn-default" id="show_answer">Show Answer</button> 
-  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<div id="modal" style="display:none;">
+  <table>
+    <tr><td><%= tr('status')%></td><td><input type="checkbox" id="modal-status"></td></tr>
+    <tr><td><%=tr('not_included') + " " + Time.new.year.to_s%></td><td><input type="checkbox" id="modal-not-included"></td></tr>
+  </table>
+  <div style="padding-top:10px"></div>
+  <button type="button" class="btn" id="update_button">Update</button> 
+  <button type="button" class="btn btn-default" id="cancel_button" data-dismiss="modal">Cancel</button>
 </div>
 
   
@@ -104,11 +155,11 @@
         <% if enrollment %>
         <td class="not_included"><%= enrollment.school_year %> <%= enrollment.not_included ? "✓": "✘" %></td>
         <% else %>
-        <td></td>
+        <td class="not_included"></td>
         <% end %>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
-        <td class="quick_edit">Quick Edit</td>
+        <td class="quick_edit" data-child-id="<%=child.id%>"><a>Quick Edit</a></td>
         <td><%= link_to tr('new_enrollment'), {controller: :enrollments, action: :new, child_id: child.id} %></td>
       </tr>
     <% end %>
