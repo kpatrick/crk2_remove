@@ -95,25 +95,27 @@ class ChildrenController < ApplicationController
     begin
       @child.save
     rescue => e
-      render json: {}, status: :internal_server_error
-    end  
-    
-    not_included = request["not_included"]
-    enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
-    if enrollment && enrollment.school_year == Time.new.year.to_s
-      enrollment.not_included = not_included
-    else 
-      enrollment = Enrollment.new
-      enrollment.school_year = Time.new.year.to_s
-      enrollment.child_id = @child.id
-      enrollment.not_included = not_included
-    end  
-    begin
-      enrollment.save
-    rescue => e
-      render json: {}, status: :internal_server_error
-    end   
-    render json: {status: @child.status, not_included: enrollment.not_included}
+      render json: {}, :status => :internal_server_error
+    end
+      
+    if @child.status == "in_program"
+      not_included = request["not_included"]
+      enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
+      if enrollment && enrollment.school_year == Time.new.year.to_s
+        enrollment.not_included = not_included
+      else 
+        enrollment = Enrollment.new
+        enrollment.school_year = Time.new.year.to_s
+        enrollment.child_id = @child.id
+        enrollment.not_included = not_included
+      end  
+      begin
+        enrollment.save
+      rescue => e
+        render json: {}, :status => :internal_server_error
+      end
+    end
+    render json: {}, :status => 200
   end
   
   private

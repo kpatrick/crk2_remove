@@ -39,7 +39,8 @@ en:
   destroy: "Destroy"
   dollar_amount: "Dollar Amount"
   donor_number: "Donor Number"
-  edit: "Edit"
+  edit: "Edit"  
+  quick_edit: "Quick Edit"
   enrollment: "Registration"
   enrollments: "Registrations"
   enrollment_created: "Registration was successfully created."
@@ -331,3 +332,4 @@ en:
     other: "Other"
   errors:
     duplicate: "Duplicate"
+    accessing_db: "There was an error accessing the database. Please restart your browser and reload the application home page."

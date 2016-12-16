@@ -40,6 +40,7 @@ es:
   dollar_amount: "Monto en Dólares"
   donor_number: "Codigo de Patrocinador"
   edit: "Editar"
+  quick_edit: "Editar rápidamente"
   enrollment: "Registro"
   enrollments: "Registros"
   enrollment_created: "El registro se ha creado correctamente."
@@ -200,3 +201,4 @@ es:
     other: "Otro"
   errors:
     duplicate: "Duplicado"
+    accessing_db: "Hay un error accediendo la Base de Datos. Por favor reinicie su navegador e ingrese a la Página Principal de la aplicación de nuevo."

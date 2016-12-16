@@ -17,7 +17,7 @@
     
     $("body").on($.modal.OPEN, "#modal", function(event, modal){
       $.ajax("/children/" + childId + "/quick_edit_read").
-          fail(function(){alert("<%=tr('record_not_saved')%>")}).  // TODO fix message
+          fail(function(){alert("<%=tr('errors.accessing_db')%>")}).
           done(function(data){
               $("#modal-status").prop("checked", data.status === "in_program");
               var not_included = (data.enrollment && data.enrollment["<%=Time.new.year.to_s%>"]) || false;
@@ -35,9 +35,9 @@
         dataType: "json",
         data: JSON.stringify({'status': (modal_status ? "in_program" : "out_of_program"), 'not_included': modal_not_included})
       }).fail(function(){alert("<%=tr('record_not_saved')%>")}).
-         done(function(data){
+         done(function(){
            $.ajax("/children/" + childId + "/quick_edit_read").
-               fail(function(){alert("<%=tr('record_not_saved')%>")}). // TODO fix message
+               fail(function(){alert("<%=tr('errors.accessing_db')%>")}).
                done(function(data){
                  var status = (data.status === "in_program") ? "✓": "✘";
                  var not_included = "";
@@ -159,7 +159,7 @@
         <% end %>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), child %></td>
-        <td class="quick_edit" data-child-id="<%=child.id%>"><a>Quick Edit</a></td>
+        <td class="quick_edit" data-child-id="<%=child.id%>"><a><%= tr('quick_edit') %></a></td>
         <td><%= link_to tr('new_enrollment'), {controller: :enrollments, action: :new, child_id: child.id} %></td>
       </tr>
     <% end %>
