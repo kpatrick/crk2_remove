@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112200052) do
+ActiveRecord::Schema.define(version: 20161223075059) do
 
   create_table "children", force: true do |t|
     t.string   "code"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20161112200052) do
     t.text     "midyear_grade"
     t.boolean  "midyear_report_card"
     t.boolean  "midyear_work_form"
+    t.boolean  "included"
   end
 
   create_table "families", force: true do |t|

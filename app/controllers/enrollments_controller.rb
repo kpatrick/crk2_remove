@@ -71,9 +71,9 @@ class EnrollmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
       if @user.can_access_sponsor?
-        params.require(:enrollment).permit(:school_year, :child_id, :sponsor_id, :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :midyear_attendance, :report_card, :work_form, :midyear_report_card, :midyear_work_form, :pass, :newyear_grade, :midyear_grade, :notes, :letter, :not_included, :close_up_photo, :full_photo)
+        params.require(:enrollment).permit(:school_year, :child_id, :sponsor_id, :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :midyear_attendance, :report_card, :work_form, :midyear_report_card, :midyear_work_form, :pass, :newyear_grade, :midyear_grade, :notes, :letter, :included, :close_up_photo, :full_photo)
       else
-        params.require(:enrollment).permit(:school_year, :child_id,              :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :midyear_attendance, :report_card, :work_form, :midyear_report_card, :midyear_work_form, :pass, :newyear_grade, :midyear_grade, :notes, :letter, :not_included, :close_up_photo, :full_photo)
+        params.require(:enrollment).permit(:school_year, :child_id,              :newyear_shirt_size, :newyear_pant_size, :newyear_shoe_size, :midyear_shirt_size, :midyear_pant_size, :midyear_shoe_size, :newyear_attendance, :midyear_attendance, :report_card, :work_form, :midyear_report_card, :midyear_work_form, :pass, :newyear_grade, :midyear_grade, :notes, :letter, :included, :close_up_photo, :full_photo)
       end
     end
 end

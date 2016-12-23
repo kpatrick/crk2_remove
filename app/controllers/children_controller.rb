@@ -81,7 +81,7 @@ class ChildrenController < ApplicationController
 
   def quick_edit_read
     enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
-    result = {status: (@child.status), enrollment: (enrollment ? {enrollment.school_year => enrollment.not_included} : nil)}
+    result = {status: (@child.status), enrollment: (enrollment ? {enrollment.school_year => enrollment.included} : nil)}
     render :json => result
   end
   
@@ -99,15 +99,15 @@ class ChildrenController < ApplicationController
     end
       
     if @child.status == "in_program"
-      not_included = request["not_included"]
+      included = request["included"]
       enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
       if enrollment && enrollment.school_year == Time.new.year.to_s
-        enrollment.not_included = not_included
+        enrollment.included = included
       else 
         enrollment = Enrollment.new
         enrollment.school_year = Time.new.year.to_s
         enrollment.child_id = @child.id
-        enrollment.not_included = not_included
+        enrollment.included = included
       end  
       begin
         enrollment.save

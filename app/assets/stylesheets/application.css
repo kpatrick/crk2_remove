@@ -47,7 +47,7 @@
      # text-decoration: line-through;
      color: grey
    }
-   .status, .not_included {
+   .status, .included {
      text-align: center;
      # font-weight: bold;
   }
