@@ -21,6 +21,7 @@
 
 en:
   active: "Active"
+  cancel: "Cancel"
   child: "Child"
   children: "Children"
   child_created: "Child was successfully created."
@@ -39,7 +40,7 @@ en:
   destroy: "Destroy"
   dollar_amount: "Dollar Amount"
   donor_number: "Donor Number"
-  edit: "Edit"  
+  edit: "Edit"
   quick_edit: "Quick Edit"
   enrollment: "Registration"
   enrollments: "Registrations"
@@ -145,6 +146,7 @@ en:
   sponsorship_deleted: "Sponsorship was successfully deleted."
   status: "Status"
   submit: "Submit"
+  update: "Update"
   username: "Username"
   use_english: "en"
   use_spanish: "es"

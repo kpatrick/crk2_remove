@@ -21,6 +21,7 @@
 
 es:
   active: "Activo"
+  cancel: "Cancelar"
   child: "Niño"
   children: "Niños"
   child_created: "Niño se ha creado correctamente."
@@ -144,6 +145,7 @@ es:
   sponsorship_deleted: "Patrocinio fue eliminado correctamente."
   status: "Estado"
   submit: "Enviar"
+  update: "Actualizar"
   username: "Nombre de Usuario"
   work_form_notes: "Apuntes de Boleta de Trabajo"
   bool:
