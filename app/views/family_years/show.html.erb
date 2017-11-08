@@ -50,12 +50,11 @@
 
   <tbody>
     <% @children.each do |child|
-       current_year = Time.new.year.to_s
-       enrollment = Enrollment.where(child_id: child.id).where(school_year: current_year).first
+       enrollment = Enrollment.where(child_id: child.id).where(school_year: @family_year.school_year).first
        if enrollment
     %>
       <tr <%= child.status != "in_program" ? "class=out_of_program": "" %>>
-        <td><%= current_year %></td>
+        <td><%= @family_year.school_year %></td>
         <td><%= child.code %></td>
         <td><%= child.family_name1 %> <%= child.family_name2 %></td>
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
