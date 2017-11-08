@@ -30,7 +30,7 @@
 </p>
 <% end %>
 
-<h3><%= tr("children") %></h3>
+<h3><%= tr("enrollments") %></h3>
 
 <% if @children.present? %>
 <table>
@@ -41,7 +41,6 @@
       <th><%= tr('family_names') %></th>
       <th><%= tr('given_names') %></th>
       <th><%= tr('date_of_birth') %></th>
-      <th><%= tr('status') %></th>
       <th><%= tr('gender') %></th>
       <th></th>
       <th></th>
@@ -59,7 +58,6 @@
         <td><%= child.family_name1 %> <%= child.family_name2 %></td>
         <td><%= child.given_name1 %> <%= child.given_name2 %></td>
         <td><%= child.dob %></td>
-        <td class="status"><%= child.status == "in_program" ? "✓": "✘" %></td>
         <td><%= Child::code_to_gender(self)[child.gender] %></td>
         <td><%= link_to tr('show'), enrollment %></td>
         <td><%= link_to tr('edit'), edit_enrollment_path(enrollment) %></td>
