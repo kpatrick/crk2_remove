@@ -28,7 +28,9 @@ class ChildrenController < ApplicationController
   # POST /children
   # POST /children.json
   def create
-    @child = Child.new(child_params)
+    cp = child_params
+    cp[:code] = cp[:code].strip
+    @child = Child.new(cp)
 
     respond_to do |format|
       begin
@@ -53,7 +55,9 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       begin
-        updated = @child.update(child_params)
+        cp = child_params
+        cp[:code] = cp[:code].strip
+        updated = @child.update(cp)
       rescue ActiveRecord::RecordNotUnique => e
         @child.errors[:base] << e.message
         updated = false
@@ -84,31 +88,31 @@ class ChildrenController < ApplicationController
     result = {status: (@child.status), enrollment: (enrollment ? {enrollment.school_year => enrollment.included} : nil)}
     render :json => result
   end
-  
+
   def quick_edit_update
-    status = request["status"]    
+    status = request["status"]
     if status == "in_program"
       @child.status = "in_program"
     else
       @child.status = "out_of_program"
-    end  
+    end
     begin
       @child.save
     rescue => e
       render json: {}, :status => :internal_server_error
     end
-      
+
     if @child.status == "in_program"
       included = request["included"]
       enrollment = Enrollment.where(child_id: @child.id).order(school_year: :desc).first
       if enrollment && enrollment.school_year == Time.new.year.to_s
         enrollment.included = included
-      else 
+      else
         enrollment = Enrollment.new
         enrollment.school_year = Time.new.year.to_s
         enrollment.child_id = @child.id
         enrollment.included = included
-      end  
+      end
       begin
         enrollment.save
       rescue => e
@@ -117,7 +121,7 @@ class ChildrenController < ApplicationController
     end
     render json: {}, :status => 200
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_child
