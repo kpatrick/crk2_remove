@@ -12,6 +12,7 @@ class FamilyYearsController < ApplicationController
   # GET /family_years/1.json
   def show
     @family = @family_year.family
+    @children = Child.joins(:family).where("families.id = ?", @family.id).order("children.code ASC")
   end
 
   # GET /family_years/new

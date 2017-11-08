@@ -12,8 +12,17 @@
 </p>
 
 <p>
+  <strong><%=tr('family')%>:</strong>
+  <%= link_to "#{@family.try(:community).try(:code)} - #{@family.try(:name)}", @family %>
+</p>
+
+<p>
   <strong><%= tr("school_year") %>:</strong>
-  <%= @enrollment.school_year %>
+  <% if @family_year %>
+  <%=  link_to @enrollment.school_year, @family_year %>
+  <% else %>
+  <%=  @enrollment.school_year %>
+  <% end %>
 </p>
 
 <% if @user && @user.can_access_sponsor? %>

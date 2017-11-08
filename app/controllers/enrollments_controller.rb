@@ -11,6 +11,7 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments/1
   # GET /enrollments/1.json
   def show
+    @family_year = FamilyYear.where(school_year: @enrollment.school_year).where(family_id: @family.id).first
   end
 
   # GET /enrollments/new
@@ -66,6 +67,7 @@ class EnrollmentsController < ApplicationController
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
       @child = @enrollment.child
+      @family = @child.family
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

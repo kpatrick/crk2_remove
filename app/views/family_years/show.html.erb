@@ -29,3 +29,44 @@
   <% end %>
 </p>
 <% end %>
+
+<h3><%= tr("children") %></h3>
+
+<% if @children.present? %>
+<table>
+  <thead>
+    <tr>
+      <th><%= tr('school_year') %></th>
+      <th><%= tr('code') %></th>
+      <th><%= tr('family_names') %></th>
+      <th><%= tr('given_names') %></th>
+      <th><%= tr('date_of_birth') %></th>
+      <th><%= tr('status') %></th>
+      <th><%= tr('gender') %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.each do |child|
+       current_year = Time.new.year.to_s
+       enrollment = Enrollment.where(child_id: child.id).where(school_year: current_year).first
+       if enrollment
+    %>
+      <tr <%= child.status != "in_program" ? "class=out_of_program": "" %>>
+        <td><%= current_year %></td>
+        <td><%= child.code %></td>
+        <td><%= child.family_name1 %> <%= child.family_name2 %></td>
+        <td><%= child.given_name1 %> <%= child.given_name2 %></td>
+        <td><%= child.dob %></td>
+        <td class="status"><%= child.status == "in_program" ? "✓": "✘" %></td>
+        <td><%= Child::code_to_gender(self)[child.gender] %></td>
+        <td><%= link_to tr('show'), enrollment %></td>
+        <td><%= link_to tr('edit'), edit_enrollment_path(enrollment) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
