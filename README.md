@@ -2,6 +2,11 @@ README
 
 Costa Rica Kids School Sponsorship Program
 
+Warning
+* The gems used in the project are out of date and may have security issues.
+* The password store does not use a salted password hash, which is contrary to best practices.
+
+
 Software Stack
 
 * Tested on Microsoft Windows 8+ and Chrome
