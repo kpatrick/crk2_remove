@@ -2,6 +2,8 @@ README
 
 Costa Rica Kids School Sponsorship Program
 
+DELETION FAIR WARNING. Please fork a copy if you want it.
+
 Warning
 * The gems used in the project are out of date and may have security issues.
 * The password store does not use a salted password hash, which is contrary to best practices.
