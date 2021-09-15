@@ -1,7 +1,5 @@
 README
 
-Costa Rica Kids School Sponsorship Program
-
 DELETION FAIR WARNING. Please fork a copy if you want it.
 
 Warning
